@@ -1,0 +1,81 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using TMPro;
+
+public class GameManager : MonoBehaviour
+{
+    public float timeBetweenSpawns = 1f;
+    public BubbleSpawner[] bubbleSpawners;
+    public string[] animalTags;
+    public int[] animalIndex = {0, 1, 2, 3, 4};
+
+    public int currentAnimalIndex;
+    public string currentAnimalTag;
+    public bool currentAnimalExists = false;
+
+    public TMP_Text currentAnimalText;
+    public TMP_Text scoreText;
+
+    bool started = false;
+
+    public int score = 0;
+    public int missed = 0;
+    // Start is called before the first frame update
+    void Start()
+    {
+        ChangeCurrentAnimal();
+        CallSpawners();
+    }
+    //Updates the current animal to be selected
+    public void ChangeCurrentAnimal()
+    {
+        currentAnimalIndex = Random.Range(0, animalTags.Length);
+        currentAnimalTag = animalTags[currentAnimalIndex];
+
+        Debug.Log("Current Animal : " + currentAnimalTag);
+
+        currentAnimalText.text = currentAnimalTag;
+    }
+    //Each spawner has animal index which decides which animal to spawn
+    //This function randomizes the animal indexes
+    public void AnimalIndexShuffle()
+    {
+        for (int i = 0; i < animalIndex.Length; i++)
+        {
+            int tmp = animalIndex[i];
+            int r = Random.Range(i, animalIndex.Length);
+            animalIndex[i] = animalIndex[r];
+            animalIndex[r] = tmp;
+        }
+    }
+    //Assign the shuffled animal indexes to each spawner and call the spawner
+    public void CallSpawners()
+    {
+        StartCoroutine(SpawnAnimals());
+    }
+    public IEnumerator SpawnAnimals()
+    {
+        while(true)
+        {
+            AnimalIndexShuffle();
+            for (int i = 0; i < bubbleSpawners.Length; i++)
+            {
+                if (animalIndex[i] == currentAnimalIndex && !currentAnimalExists) //there should be only one current animal per game loop
+                {
+                    currentAnimalExists = true;
+                }
+                bubbleSpawners[i].bubble.animalIndex = animalIndex[i];
+                bubbleSpawners[i].SpawnBubble(); //Only spawn the bubble in BubbleSpawner. The script is written so that each animal is spawned as a child within each bubble. The game logic checks for child of selected bubble. 
+                yield return new WaitForSeconds(timeBetweenSpawns);
+            }
+        }
+    }
+    //Increase score if correct animal is selected
+    public void AddScore()
+    {
+        score++;
+        scoreText.text = "Score : " + score.ToString();
+        ChangeCurrentAnimal();
+    }
+}
