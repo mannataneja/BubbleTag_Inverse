@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Bubbles : MonoBehaviour
 {
-    public GameManager manager;
+    public GameManager gameManager;
 
     public GameObject[] animals;
     public GameObject bubble;
@@ -26,7 +26,7 @@ public class Bubbles : MonoBehaviour
 
     private void Start()
     {
-        manager = GameObject.FindAnyObjectByType<GameManager>();
+        gameManager = GameObject.FindAnyObjectByType<GameManager>();
         //SpawnAnimals animal as soon as bubble is spawned. Animal index is passed from Game Manager
         Instantiate(animals[animalIndex], transform);
 
@@ -50,26 +50,27 @@ public class Bubbles : MonoBehaviour
 
         if (transform.position.y >= maxHeight)
         {
-            if(animalIndex == manager.currentAnimalIndex)
+            if(animal.GetComponent<Animal>().isCurrentAnimal)
             {
-                manager.currentAnimalExists = false;
+                gameManager.currentAnimalExists = false;
+                gameManager.missed++;
             }
             Destroy(gameObject);
         }
     }
     public void CheckForCurrentAnimal()
     {
-        if (animalIndex == manager.currentAnimalIndex && animal.GetComponent<Animal>().selectable == true)
+        if (animalIndex == gameManager.currentAnimalIndex && animal.GetComponent<Animal>().selectable == true)
         {
             transform.GetChild(0).GetComponent<MeshRenderer>().material = currentBubbleMaterial;
         }
     }
     public void SetCurrentBubbleMaterial()
     {
-        if (animalIndex == manager.currentAnimalIndex)
-        {
+        //if (animalIndex == gameManager.currentAnimalIndex)
+        //{
             transform.GetChild(0).GetComponent<MeshRenderer>().material = currentBubbleMaterial;
-        }
+        //}
     }
     public void SetDullBubbleMaterial()
     {
@@ -80,8 +81,8 @@ public class Bubbles : MonoBehaviour
     {
         if(animal.GetComponent<Animal>().selectable == true)
         {
-            manager.currentAnimalExists = false;
-            manager.AddScore();
+            gameManager.currentAnimalExists = false;
+            gameManager.AddScore();
             pop.Play();
             Destroy(bubble);
             //animal.GetComponent<Animal>().StopAnimalSound();
@@ -91,12 +92,8 @@ public class Bubbles : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
             Destroy(gameObject);
         }
-        else
-        {
-            manager
-        }
     }
-    //Game manager destroys all bubbles before starting next round
+    //Game gameManager destroys all bubbles before starting next round
     public void SelfDestruct()
     {
         Destroy(gameObject);

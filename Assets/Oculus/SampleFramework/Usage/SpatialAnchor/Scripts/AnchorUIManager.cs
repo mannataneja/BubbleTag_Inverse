@@ -13,7 +13,7 @@ using UnityEngine.UI;
 public class AnchorUIManager : MonoBehaviour
 {
     /// <summary>
-    /// Anchor UI manager singleton instance
+    /// Anchor UI gameManager singleton instance
     /// </summary>
     public static AnchorUIManager Instance;
 

@@ -21,9 +21,17 @@ public class GameManager : MonoBehaviour
 
     public int score = 0;
     public int missed = 0;
+    public int wrong = 0;
+
+    public TMP_Text correctText;
+    public TMP_Text missedText;
+    public TMP_Text wrongText;
+
+    public Canvas dataCanvas;
     // Start is called before the first frame update
     void Start()
     {
+        dataCanvas.enabled = false;
         ChangeCurrentAnimal();
         CallSpawners();
     }
@@ -68,6 +76,10 @@ public class GameManager : MonoBehaviour
                 bubbleSpawners[i].bubble.animalIndex = animalIndex[i];
                 bubbleSpawners[i].SpawnBubble(); //Only spawn the bubble in BubbleSpawner. The script is written so that each animal is spawned as a child within each bubble. The game logic checks for child of selected bubble. 
                 yield return new WaitForSeconds(timeBetweenSpawns);
+
+                correctText.text = "Correct : " + score.ToString();
+                missedText.text = "Missed : " + missed.ToString();
+                wrongText.text = "Wrong : " + wrong.ToString();
             }
         }
     }
@@ -76,6 +88,17 @@ public class GameManager : MonoBehaviour
     {
         score++;
         scoreText.text = "Score : " + score.ToString();
+        
         ChangeCurrentAnimal();
+    }
+    public void EnableDataCanvas()
+    {
+        dataCanvas.enabled = true;
+        Time.timeScale = 0;
+    }
+    public void DisableDataCanvas()
+    {
+        dataCanvas.enabled = false;
+        Time.timeScale = 1;
     }
 }

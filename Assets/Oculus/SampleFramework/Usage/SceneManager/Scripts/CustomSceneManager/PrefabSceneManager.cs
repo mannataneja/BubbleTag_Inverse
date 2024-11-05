@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 
 /// <summary>
-/// This sample expands on the basic scene manager and adds the following features:
+/// This sample expands on the basic scene gameManager and adds the following features:
 ///   * SpawnAnimals a prefab for the wall, ceiling, floor elements and set 2D dimensions
 ///   * SpawnAnimals a fallback object for all other semantic labels and set 3D dimensions
 ///   * Update the location of all anchors at some frequency with new tracking info

@@ -13,12 +13,14 @@ public class Animal : MonoBehaviour
     float floatingSpeed = 5f;
 
     public bool selectable = false;
+
+    public bool isCurrentAnimal = false;
     // Start is called before the first frame update
     void Start()
     {
         animalTag = gameObject.tag;
         manager = GameObject.FindAnyObjectByType<GameManager>();
-        //CheckForCurrentAnimal();
+        CheckForCurrentAnimal();
         StartCoroutine(PlayAnimalSound());
     }
 
@@ -55,8 +57,7 @@ public class Animal : MonoBehaviour
     {
         if (animalTag == manager.currentAnimalTag)
         {
-            //audioPlaying = true;
-            //StartCoroutine(PlayAnimalSound());
+            isCurrentAnimal = true; 
         }
     }
     //Play sound of current animal

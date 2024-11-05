@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 
 /// <summary>
-/// This sample shows you how to implement a scene manager with the following features:
+/// This sample shows you how to implement a scene gameManager with the following features:
 ///   * Fetch all room scene anchors
 ///   * Fetch all child scene anchors of a room
 ///   * Set the location, and name of the object as label
