@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
 using TMPro;
 
 public class GameManager : MonoBehaviour
@@ -27,13 +29,30 @@ public class GameManager : MonoBehaviour
     public TMP_Text missedText;
     public TMP_Text wrongText;
 
+    public Slider progressBarImage;
+    public ParticleSystem progressBarParticleSystem;
+    public UnityEvent onAddScore;
+
     public Canvas dataCanvas;
     // Start is called before the first frame update
     void Start()
     {
+        onAddScore.AddListener(UpdateProgressBar);
+
         dataCanvas.enabled = false;
         ChangeCurrentAnimal();
         CallSpawners();
+    }
+
+    void UpdateProgressBar()
+    {
+        if (score <= 100)
+        {
+            progressBarImage.value = score*10;
+            //progressBarParticleSystem.Play();
+            // Debug.Log(score);
+        }
+
     }
     //Updates the current animal to be selected
     public void ChangeCurrentAnimal()
@@ -86,9 +105,10 @@ public class GameManager : MonoBehaviour
     //Increase score if correct animal is selected
     public void AddScore()
     {
+       
         score++;
         scoreText.text = "Score : " + score.ToString();
-        
+        onAddScore?.Invoke();
         ChangeCurrentAnimal();
     }
     public void EnableDataCanvas()
