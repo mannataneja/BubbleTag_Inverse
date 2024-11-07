@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
         if (score <= 100)
         {
             progressBarImage.value = score*10;
-            //progressBarParticleSystem.Play();
+            progressBarParticleSystem.Play();
             // Debug.Log(score);
         }
 
