@@ -17,6 +17,7 @@ TagManager:
   - Pig
   - Sheep
   - Ground
+  - ViewData
   layers:
   - Default
   - TransparentFX
