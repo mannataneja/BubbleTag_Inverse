@@ -15,7 +15,6 @@ public class RaycastVR : MonoBehaviour
     private Transform selection;
     //private RaycastHit raycastHit;
 
-
     void Update()
     {
         RaycastHit hit;
@@ -28,6 +27,7 @@ public class RaycastVR : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(transform.position, transform.forward, out hit)) //Make sure you have EventSystem in the hierarchy before using EventSystem
         {
+           
             highlight = hit.transform;
             if (highlight.CompareTag("Selectable") && highlight != selection)
             {
@@ -44,6 +44,7 @@ public class RaycastVR : MonoBehaviour
 
             if (OVRInput.Get(OVRInput.RawButton.RIndexTrigger))
             {
+                Debug.Log(hit);
 
                 if (highlight)
                 {

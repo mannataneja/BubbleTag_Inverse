@@ -33,6 +33,8 @@ public class GameManager : MonoBehaviour
     public UnityEvent onAddScore;
 
     public Canvas dataCanvas;
+    public Canvas HUD;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -116,12 +118,15 @@ public class GameManager : MonoBehaviour
     }
     public void EnableDataCanvas()
     {
-        dataCanvas.enabled = true;
         Time.timeScale = 0;
+        dataCanvas.enabled = true;
+        HUD.enabled = false;
+        
     }
     public void DisableDataCanvas()
     {
         dataCanvas.enabled = false;
+        HUD.enabled = true;
         Time.timeScale = 1;
     }
 }
