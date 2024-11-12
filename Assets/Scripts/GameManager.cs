@@ -19,18 +19,17 @@ public class GameManager : MonoBehaviour
     public TMP_Text currentAnimalText;
     public TMP_Text scoreText;
 
-    bool started = false;
+    public TMP_Text correctText;
+    public TMP_Text missedText;
+    public TMP_Text wrongText;
 
     public int score = 0;
     public int missed = 0;
     public int wrong = 0;
 
-    public TMP_Text correctText;
-    public TMP_Text missedText;
-    public TMP_Text wrongText;
-
     public Slider progressBarImage;
     public ParticleSystem progressBarParticleSystem;
+
     public UnityEvent onAddScore;
 
     public Canvas dataCanvas;
@@ -41,14 +40,14 @@ public class GameManager : MonoBehaviour
 
         dataCanvas.enabled = false;
         ChangeCurrentAnimal();
-        CallSpawners();
+        StartCoroutine(SpawnAnimals());
     }
 
     void UpdateProgressBar()
     {
         if (score <= 100)
         {
-            progressBarImage.value = score*10;
+            progressBarImage.value = score * 10;
             progressBarParticleSystem.Play();
             // Debug.Log(score);
         }
@@ -60,9 +59,40 @@ public class GameManager : MonoBehaviour
         currentAnimalIndex = Random.Range(0, animalTags.Length);
         currentAnimalTag = animalTags[currentAnimalIndex];
 
-        Debug.Log("Current Animal : " + currentAnimalTag);
-
         currentAnimalText.text = currentAnimalTag;
+
+        Debug.Log("Current Animal : " + currentAnimalTag);   
+    }
+
+    //Assign the shuffled animal indexes to each spawner and call the spawner
+    public IEnumerator SpawnAnimals()
+    {
+        while(true)
+        {
+            AnimalIndexShuffle();
+            for (int i = 0; i < bubbleSpawners.Length; i++)
+            {
+                if (animalIndex[i] == currentAnimalIndex) //there should be only one current animal per game loop
+                {
+                    if (!currentAnimalExists)
+                    {
+                        currentAnimalExists = true;
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                    
+                }
+                bubbleSpawners[i].bubble.animalIndex = animalIndex[i];
+                bubbleSpawners[i].SpawnBubble(); //Only spawn the bubble in BubbleSpawner. The script is written so that each animal is spawned as a child within each bubble. The game logic checks for child of selected bubble. 
+                yield return new WaitForSeconds(timeBetweenSpawns);
+
+                correctText.text = "Correct : " + score.ToString();
+                missedText.text = "Missed : " + missed.ToString();
+                wrongText.text = "Wrong : " + wrong.ToString();
+            }
+        }
     }
     //Each spawner has animal index which decides which animal to spawn
     //This function randomizes the animal indexes
@@ -76,36 +106,9 @@ public class GameManager : MonoBehaviour
             animalIndex[r] = tmp;
         }
     }
-    //Assign the shuffled animal indexes to each spawner and call the spawner
-    public void CallSpawners()
-    {
-        StartCoroutine(SpawnAnimals());
-    }
-    public IEnumerator SpawnAnimals()
-    {
-        while(true)
-        {
-            AnimalIndexShuffle();
-            for (int i = 0; i < bubbleSpawners.Length; i++)
-            {
-                if (animalIndex[i] == currentAnimalIndex && !currentAnimalExists) //there should be only one current animal per game loop
-                {
-                    currentAnimalExists = true;
-                }
-                bubbleSpawners[i].bubble.animalIndex = animalIndex[i];
-                bubbleSpawners[i].SpawnBubble(); //Only spawn the bubble in BubbleSpawner. The script is written so that each animal is spawned as a child within each bubble. The game logic checks for child of selected bubble. 
-                yield return new WaitForSeconds(timeBetweenSpawns);
-
-                correctText.text = "Correct : " + score.ToString();
-                missedText.text = "Missed : " + missed.ToString();
-                wrongText.text = "Wrong : " + wrong.ToString();
-            }
-        }
-    }
     //Increase score if correct animal is selected
     public void AddScore()
-    {
-       
+    {   
         score++;
         scoreText.text = "Score : " + score.ToString();
         onAddScore?.Invoke();

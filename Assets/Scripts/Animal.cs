@@ -8,20 +8,21 @@ public class Animal : MonoBehaviour
 
     string animalTag;
 
+    public bool selectable = false;
+    public bool isCurrentAnimal = false;
+
     bool rotate = false;
     bool floating = false;
     float floatingSpeed = 5f;
 
-    public bool selectable = false;
-
-    public bool isCurrentAnimal = false;
+   
     // Start is called before the first frame update
     void Start()
     {
         animalTag = gameObject.tag;
         manager = GameObject.FindAnyObjectByType<GameManager>();
         CheckForCurrentAnimal();
-        StartCoroutine(PlayAnimalSound());
+        StartCoroutine(AnimalSelectable());
     }
 
     // Update is called once per frame
@@ -46,9 +47,9 @@ public class Animal : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             Debug.Log("Ground Collision");
-            gameObject.GetComponent<Rigidbody>().useGravity = false;
+            gameObject.GetComponent<Rigidbody>().useGravity = false; //animal floats up after hitting ground
             StopAnimalSound();
-            rotate = true;
+            rotate = true; //animal spins
             floating = true;
             Destroy(gameObject, 2f);
         }
@@ -61,13 +62,13 @@ public class Animal : MonoBehaviour
         }
     }
     //Play sound of current animal
-    public IEnumerator PlayAnimalSound()
+    public IEnumerator AnimalSelectable()
     {
-        yield return new WaitForSeconds(3f);
-        selectable = true;
-        gameObject.transform.parent.GetComponent<Bubbles>().SetCurrentBubbleMaterial();
-        gameObject.GetComponent<AudioSource>().Play();
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(3f); //wait after spawning
+        selectable = true; //make it interactable
+        gameObject.transform.parent.GetComponent<Bubbles>().SetCurrentBubbleMaterial(); //make bubble selectable/transparent color
+        gameObject.GetComponent<AudioSource>().Play(); //play animal sound
+        yield return new WaitForSeconds(2.5f); //wait before making it un-selectable
         selectable = false;
         gameObject.transform.parent.GetComponent<Bubbles>().SetDullBubbleMaterial();
         gameObject.GetComponent<AudioSource>().Stop();

@@ -5,13 +5,16 @@ using UnityEngine;
 
 public class Bubbles : MonoBehaviour
 {
-    public GameManager gameManager;
+    public GameObject bubble;
+    public Material currentBubbleMaterial;
+    public Material dullBubbleMaterial;
 
     public GameObject[] animals;
-    public GameObject bubble;
+    public int animalIndex; //animalIndex is passed from GameManager
+
     public float speed = 5f;
     public ParticleSystem pop;
-    public int animalIndex;
+    
 
     float maxHeight = 5f;
 
@@ -20,13 +23,12 @@ public class Bubbles : MonoBehaviour
     Collider animalCollider;
     public string animalTag;
 
-    public Material currentBubbleMaterial;
-    public Material dullBubbleMaterial;
-
+    GameManager gameManager;
 
     private void Start()
     {
         gameManager = GameObject.FindAnyObjectByType<GameManager>();
+
         //SpawnAnimals animal as soon as bubble is spawned. Animal index is passed from Game Manager
         Instantiate(animals[animalIndex], transform);
 
@@ -44,11 +46,10 @@ public class Bubbles : MonoBehaviour
     }
     void Update()
     {
-        //CheckForCurrentAnimal();
         //Make bubble float up
         transform.Translate(Vector3.up * speed * Time.deltaTime);
 
-        if (transform.position.y >= maxHeight)
+        if (transform.position.y >= maxHeight) //bubble and animal is despawned after reaching maximum height
         {
             if(animal.GetComponent<Animal>().isCurrentAnimal)
             {
@@ -58,19 +59,9 @@ public class Bubbles : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    public void CheckForCurrentAnimal()
-    {
-        if (animalIndex == gameManager.currentAnimalIndex && animal.GetComponent<Animal>().selectable == true)
-        {
-            transform.GetChild(0).GetComponent<MeshRenderer>().material = currentBubbleMaterial;
-        }
-    }
     public void SetCurrentBubbleMaterial()
     {
-        //if (animalIndex == gameManager.currentAnimalIndex)
-        //{
-            transform.GetChild(0).GetComponent<MeshRenderer>().material = currentBubbleMaterial;
-        //}
+        transform.GetChild(0).GetComponent<MeshRenderer>().material = currentBubbleMaterial;
     }
     public void SetDullBubbleMaterial()
     {
@@ -93,10 +84,4 @@ public class Bubbles : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    //Game gameManager destroys all bubbles before starting next round
-    public void SelfDestruct()
-    {
-        Destroy(gameObject);
-    }
-    
 }
