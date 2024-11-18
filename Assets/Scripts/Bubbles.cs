@@ -16,7 +16,7 @@ public class Bubbles : MonoBehaviour
     public ParticleSystem pop;
     
 
-    float maxHeight = 5f;
+    float maxHeight = 7f;
 
     GameObject animal;
     Rigidbody animalRB;

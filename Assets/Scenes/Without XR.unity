@@ -643,7 +643,7 @@ GameObject:
   - component: {fileID: 321395623}
   - component: {fileID: 321395622}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: HUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6110,13 +6110,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a96d6788d1fb2d9419252a1b9687ce2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBetweenSpawns: 3
+  timeBetweenSpawns: 4
   bubbleSpawners:
   - {fileID: 979193876}
   - {fileID: 1291186380}
   - {fileID: 2097552826}
   - {fileID: 2002551013}
   - {fileID: 1302818595}
+  activeSpawners: 0
+  spawner_i: 0
   animalTags:
   - Chicken
   - Cow
@@ -6141,6 +6143,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   dataCanvas: {fileID: 267433131}
+  HUD: {fileID: 321395624}
 --- !u!4 &904219998
 Transform:
   m_ObjectHideFlags: 0
