@@ -72,6 +72,10 @@ public class GameManager : MonoBehaviour
         {
             activeSpawners++;
         }
+        if(timeBetweenSpawns < 10)
+        {
+            timeBetweenSpawns++;
+        }
     }
 
     //Assign the shuffled animal indexes to each spawner and call the spawner
@@ -132,25 +136,23 @@ public class GameManager : MonoBehaviour
     public void EnableDataCanvas()
     {
         dataCanvas.enabled = true;
+        HUD.enabled = false;
         audioSources = FindObjectsOfType<AudioSource>();
         foreach (AudioSource audioSource in audioSources)
         {
             audioSource.Pause();
         }
-        Time.timeScale = 0;
-        dataCanvas.enabled = true;
-        HUD.enabled = false;
-        
+        Time.timeScale = 0;    
     }
     public void DisableDataCanvas()
     {
         dataCanvas.enabled = false;
+        HUD.enabled = true;
         audioSources = FindObjectsOfType<AudioSource>();
         foreach (AudioSource audioSource in audioSources)
         {
             audioSource.UnPause();
-        }
-        HUD.enabled = true;
+        }      
         Time.timeScale = 1;
     }
 }
