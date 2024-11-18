@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
     public Canvas dataCanvas;
 
     AudioSource[] audioSources; 
+    public Canvas HUD;
     // Start is called before the first frame update
     void Start()
     {
@@ -136,6 +137,9 @@ public class GameManager : MonoBehaviour
             audioSource.Pause();
         }
         Time.timeScale = 0;
+        dataCanvas.enabled = true;
+        HUD.enabled = false;
+        
     }
     public void DisableDataCanvas()
     {
@@ -145,6 +149,7 @@ public class GameManager : MonoBehaviour
         {
             audioSource.UnPause();
         }
+        HUD.enabled = true;
         Time.timeScale = 1;
     }
 }
