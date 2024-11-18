@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -7,10 +7,8 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    public float timeBetweenSpawns = 3f;
+    public float timeBetweenSpawns = 1f;
     public BubbleSpawner[] bubbleSpawners;
-    public int activeSpawners = 0;
-    public int spawner_i = 0;
     public string[] animalTags;
     public int[] animalIndex = {0, 1, 2, 3, 4};
 
@@ -66,11 +64,7 @@ public class GameManager : MonoBehaviour
 
         currentAnimalText.text = currentAnimalTag;
 
-        Debug.Log("Current Animal : " + currentAnimalTag);
-        if(activeSpawners < 5)
-        {
-            activeSpawners++;
-        }
+        Debug.Log("Current Animal : " + currentAnimalTag);   
     }
 
     //Assign the shuffled animal indexes to each spawner and call the spawner
@@ -81,11 +75,6 @@ public class GameManager : MonoBehaviour
             AnimalIndexShuffle();
             for (int i = 0; i < bubbleSpawners.Length; i++)
             {
-                spawner_i++;
-                if(spawner_i >= activeSpawners)
-                {
-                    spawner_i = 0;
-                }
                 if (animalIndex[i] == currentAnimalIndex) //there should be only one current animal per game loop
                 {
                     if (!currentAnimalExists)
@@ -95,10 +84,11 @@ public class GameManager : MonoBehaviour
                     else
                     {
                         continue;
-                    }    
+                    }
+                    
                 }
-                bubbleSpawners[spawner_i].bubble.animalIndex = animalIndex[i];
-                bubbleSpawners[spawner_i].SpawnBubble(); //Only spawn the bubble in BubbleSpawner. The script is written so that each animal is spawned as a child within each bubble. The game logic checks for child of selected bubble. 
+                bubbleSpawners[i].bubble.animalIndex = animalIndex[i];
+                bubbleSpawners[i].SpawnBubble(); //Only spawn the bubble in BubbleSpawner. The script is written so that each animal is spawned as a child within each bubble. The game logic checks for child of selected bubble. 
                 yield return new WaitForSeconds(timeBetweenSpawns);
 
                 correctText.text = "Correct : " + score.ToString();
@@ -148,3 +138,4 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
     }
 }
+*/

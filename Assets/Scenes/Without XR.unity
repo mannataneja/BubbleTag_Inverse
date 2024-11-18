@@ -542,7 +542,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &267433129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6129,12 +6129,12 @@ MonoBehaviour:
   currentAnimalExists: 0
   currentAnimalText: {fileID: 30066637}
   scoreText: {fileID: 1226187811}
-  score: 0
-  missed: 0
-  wrong: 0
   correctText: {fileID: 1443509142}
   missedText: {fileID: 826833014}
   wrongText: {fileID: 390084947}
+  score: 0
+  missed: 0
+  wrong: 0
   progressBarImage: {fileID: 386164836}
   progressBarParticleSystem: {fileID: 685129828}
   onAddScore:
@@ -6237,10 +6237,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bubble: {fileID: 4691606843475067291, guid: 0b087e32eecf45644a7d33640547e19e, type: 3}
-  minTime: 5
-  maxTime: 8
-  innerRadius: 0
-  outerRadius: 0
 --- !u!1 &1078068442
 GameObject:
   m_ObjectHideFlags: 0
@@ -6686,10 +6682,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bubble: {fileID: 4691606843475067291, guid: 0b087e32eecf45644a7d33640547e19e, type: 3}
-  minTime: 5
-  maxTime: 8
-  innerRadius: 0
-  outerRadius: 0
 --- !u!1 &1302818593
 GameObject:
   m_ObjectHideFlags: 0
@@ -6735,10 +6727,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bubble: {fileID: 4691606843475067291, guid: 0b087e32eecf45644a7d33640547e19e, type: 3}
-  minTime: 5
-  maxTime: 8
-  innerRadius: 0
-  outerRadius: 0
 --- !u!1 &1443509140
 GameObject:
   m_ObjectHideFlags: 0
@@ -7587,10 +7575,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bubble: {fileID: 4691606843475067291, guid: 0b087e32eecf45644a7d33640547e19e, type: 3}
-  minTime: 5
-  maxTime: 8
-  innerRadius: 0
-  outerRadius: 0
 --- !u!1 &2097552824
 GameObject:
   m_ObjectHideFlags: 0
@@ -7636,10 +7620,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bubble: {fileID: 4691606843475067291, guid: 0b087e32eecf45644a7d33640547e19e, type: 3}
-  minTime: 5
-  maxTime: 8
-  innerRadius: 0
-  outerRadius: 0
 --- !u!1 &2113291715
 GameObject:
   m_ObjectHideFlags: 0

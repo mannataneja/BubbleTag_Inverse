@@ -710,7 +710,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.64
+      value: 5.05
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -718,11 +718,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.33
+      value: -6.44
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.4034027
+      value: 0.99018
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_LocalRotation.x
@@ -730,7 +730,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.9150226
+      value: -0.13979807
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_LocalRotation.z
@@ -742,7 +742,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 132.418
+      value: -16.072
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -1729,6 +1729,8 @@ MonoBehaviour:
   - {fileID: 2097552826}
   - {fileID: 2002551013}
   - {fileID: 1302818595}
+  activeSpawners: 0
+  spawner_i: 0
   animalTags:
   - Chicken
   - Cow
@@ -1741,12 +1743,12 @@ MonoBehaviour:
   currentAnimalExists: 0
   currentAnimalText: {fileID: 192020254}
   scoreText: {fileID: 1017978278}
-  score: 0
-  missed: 0
-  wrong: 0
   correctText: {fileID: 1443509142}
   missedText: {fileID: 826833014}
   wrongText: {fileID: 390084947}
+  score: 0
+  missed: 0
+  wrong: 0
   progressBarImage: {fileID: 1138661029}
   progressBarParticleSystem: {fileID: 934669152}
   onAddScore:
@@ -6715,10 +6717,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bubble: {fileID: 4691606843475067291, guid: 0b087e32eecf45644a7d33640547e19e, type: 3}
-  minTime: 5
-  maxTime: 8
-  innerRadius: 0
-  outerRadius: 0
 --- !u!1 &1017978276
 GameObject:
   m_ObjectHideFlags: 0
@@ -7183,10 +7181,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bubble: {fileID: 4691606843475067291, guid: 0b087e32eecf45644a7d33640547e19e, type: 3}
-  minTime: 5
-  maxTime: 8
-  innerRadius: 0
-  outerRadius: 0
 --- !u!1 &1302818593
 GameObject:
   m_ObjectHideFlags: 0
@@ -7232,10 +7226,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bubble: {fileID: 4691606843475067291, guid: 0b087e32eecf45644a7d33640547e19e, type: 3}
-  minTime: 5
-  maxTime: 8
-  innerRadius: 0
-  outerRadius: 0
 --- !u!1 &1443509140
 GameObject:
   m_ObjectHideFlags: 0
@@ -8336,10 +8326,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bubble: {fileID: 4691606843475067291, guid: 0b087e32eecf45644a7d33640547e19e, type: 3}
-  minTime: 5
-  maxTime: 8
-  innerRadius: 0
-  outerRadius: 0
 --- !u!1 &2097552824
 GameObject:
   m_ObjectHideFlags: 0
@@ -8385,10 +8371,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bubble: {fileID: 4691606843475067291, guid: 0b087e32eecf45644a7d33640547e19e, type: 3}
-  minTime: 5
-  maxTime: 8
-  innerRadius: 0
-  outerRadius: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

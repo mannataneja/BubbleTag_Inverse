@@ -64,11 +64,11 @@ public class Animal : MonoBehaviour
     //Play sound of current animal
     public IEnumerator AnimalSelectable()
     {
-        yield return new WaitForSeconds(3f); //wait after spawning
+        yield return new WaitForSeconds(manager.timeBetweenSpawns); //wait after spawning
         selectable = true; //make it interactable
         gameObject.transform.parent.GetComponent<Bubbles>().SetCurrentBubbleMaterial(); //make bubble selectable/transparent color
         gameObject.GetComponent<AudioSource>().Play(); //play animal sound
-        yield return new WaitForSeconds(2.5f); //wait before making it un-selectable
+        yield return new WaitForSeconds(manager.timeBetweenSpawns - 0.5f); //wait before making it un-selectable
         selectable = false;
         gameObject.transform.parent.GetComponent<Bubbles>().SetDullBubbleMaterial();
         gameObject.GetComponent<AudioSource>().Stop();
