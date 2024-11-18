@@ -124,6 +124,7 @@ public class GameManager : MonoBehaviour
     public void AddScore()
     {   
         score++;
+        AudioManager.instance.playSFX(AudioManager.instance.correctSelection);
         scoreText.text = "Score : " + score.ToString();
         onAddScore?.Invoke();
         ChangeCurrentAnimal();
