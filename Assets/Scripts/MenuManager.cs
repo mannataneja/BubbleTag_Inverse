@@ -18,7 +18,7 @@ public class MenuManager : MonoBehaviour
        if(startBtn.IsButtonHighlighted())
        {
             Debug.Log("in");
-            if (OVRInput.Get(OVRInput.RawButton.RIndexTrigger))
+            if (OVRInput.Get(OVRInput.Button.One))
             {
                 Debug.Log("true");
                 StartGame_Btn();

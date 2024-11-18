@@ -7,6 +7,7 @@ public class GameMenuManager : MonoBehaviour
     [SerializeField] private GameManager gameManager;
     [SerializeField] private CustomButton viewDataBtn;
     [SerializeField] private CustomButton CloseBtn;
+    [SerializeField] private CustomButton exitButton;
 
     public void Update()
     {
@@ -25,6 +26,14 @@ public class GameMenuManager : MonoBehaviour
             {
                 gameManager.DisableDataCanvas();
             }
+        }
+        if(exitButton.IsButtonHighlighted())
+        {
+            if (OVRInput.Get(OVRInput.Button.One))
+            {
+                Application.Quit();
+            }
+
         }
 
     }

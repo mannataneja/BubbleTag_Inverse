@@ -66,6 +66,7 @@ public class RaycastVR : MonoBehaviour
                         else
                         {
                             Debug.Log("Wrong Selection");
+                            gameManager.wrong++;
                         }
 
                     }
