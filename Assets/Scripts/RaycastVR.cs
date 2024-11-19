@@ -75,7 +75,7 @@ public class RaycastVR : MonoBehaviour
                 }
                 else
                 {
-                    AudioManager.instance.playSFX(AudioManager.instance.emptySelection);
+                   // AudioManager.instance.playSFX(AudioManager.instance.emptySelection);
                     if (selection)
                     {
                         selection.GetComponent<MeshRenderer>().material = originalMaterialSelection;
