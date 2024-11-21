@@ -7,7 +7,8 @@ public class Selection : MonoBehaviour
 {
     public GameManager gameManager;
     public Material highlightMaterial;
-    public Material selectionMaterial;
+    public Material dullMaterial;
+    public Material redMaterial;
 
     private Material originalMaterialHighlight;
     private Material originalMaterialSelection;
@@ -52,10 +53,10 @@ public class Selection : MonoBehaviour
                     selection.GetComponent<MeshRenderer>().material = originalMaterialSelection;
                 }
                 selection = raycastHit.transform;
-                if (selection.GetComponent<MeshRenderer>().material != selectionMaterial)
+                if (selection.GetComponent<MeshRenderer>().material != dullMaterial)
                 {
                     originalMaterialSelection = originalMaterialHighlight;
-                    selection.GetComponent<MeshRenderer>().material = selectionMaterial;
+                    selection.GetComponent<MeshRenderer>().material = dullMaterial;
                     if(selection.transform.parent.GetComponent<Bubbles>().animalTag == gameManager.currentAnimalTag)
                     {
                         //Correct anial selected, so we add to score and pop the bubble
@@ -66,6 +67,8 @@ public class Selection : MonoBehaviour
                     else
                     {
                         Debug.Log("Wrong Selection");
+                        AudioManager.instance.playSFX(AudioManager.instance.wrongSelection);
+                        StartCoroutine(SetWrongSelectionColor());
                         gameManager.wrong++;
                     }
                     
@@ -82,6 +85,13 @@ public class Selection : MonoBehaviour
             }
         }
 
+    }
+    public IEnumerator SetWrongSelectionColor()
+    {
+        originalMaterialHighlight = highlight.GetComponent<MeshRenderer>().material;
+        selection.GetComponent<MeshRenderer>().material = redMaterial;
+        yield return new WaitForSeconds(1f);
+        selection.GetComponent<MeshRenderer>().material = originalMaterialHighlight;
     }
 
 }

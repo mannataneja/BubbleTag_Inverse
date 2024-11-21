@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TreeEditor;
 using UnityEngine;
 
 public class RaycastVR : MonoBehaviour
@@ -7,7 +8,8 @@ public class RaycastVR : MonoBehaviour
 
     public GameManager gameManager;
     public Material highlightMaterial;
-    public Material selectionMaterial;
+    public Material dullMaterial;
+    public Material redMaterial;
 
     private Material originalMaterialHighlight;
     private Material originalMaterialSelection;
@@ -53,10 +55,10 @@ public class RaycastVR : MonoBehaviour
                         selection.GetComponent<MeshRenderer>().material = originalMaterialSelection;
                     }
                     selection = hit.transform;
-                    if (selection.GetComponent<MeshRenderer>().material != selectionMaterial)
+                    if (selection.GetComponent<MeshRenderer>().material != dullMaterial)
                     {
                         originalMaterialSelection = originalMaterialHighlight;
-                        selection.GetComponent<MeshRenderer>().material = selectionMaterial;
+                        selection.GetComponent<MeshRenderer>().material = dullMaterial;
                         Debug.Log(selection.transform.parent.GetComponent<Bubbles>().animalTag);
                         if (selection.transform.parent.GetComponent<Bubbles>().animalTag == gameManager.currentAnimalTag)
                         {
@@ -67,6 +69,7 @@ public class RaycastVR : MonoBehaviour
                         {
                             Debug.Log("Wrong Selection");
                             AudioManager.instance.playSFX(AudioManager.instance.wrongSelection);
+                            StartCoroutine(SetWrongSelectionColor());
                             gameManager.wrong++;
                         }
 
@@ -105,5 +108,12 @@ public class RaycastVR : MonoBehaviour
         //    }
         //}
             
+    }
+    public IEnumerator SetWrongSelectionColor()
+    {
+        originalMaterialHighlight = highlight.GetComponent<MeshRenderer>().material;
+        selection.GetComponent<MeshRenderer>().material = redMaterial;
+        yield return new WaitForSeconds(1f);
+        selection.GetComponent<MeshRenderer>().material = originalMaterialHighlight;
     }
 }

@@ -3003,7 +3003,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
   highlightMaterial: {fileID: 2100000, guid: 20f56b57be6b845409ef04b6a58dd152, type: 2}
-  selectionMaterial: {fileID: 2100000, guid: 20f56b57be6b845409ef04b6a58dd152, type: 2}
+  dullMaterial: {fileID: 2100000, guid: 7b166d4a5d7e73d4da50f6a07e5f9f6b, type: 2}
+  redMaterial: {fileID: 2100000, guid: 82e0c02e9a41be44aa214e400b305e5d, type: 2}
 --- !u!114 &1503337257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3018,7 +3019,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 904219997}
   highlightMaterial: {fileID: 2100000, guid: 20f56b57be6b845409ef04b6a58dd152, type: 2}
-  selectionMaterial: {fileID: 2100000, guid: 20f56b57be6b845409ef04b6a58dd152, type: 2}
+  dullMaterial: {fileID: 0}
+  redMaterial: {fileID: 0}
 --- !u!120 &1503337258
 LineRenderer:
   serializedVersion: 2
