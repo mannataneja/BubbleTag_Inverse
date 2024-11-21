@@ -10,16 +10,30 @@ public class FarmManager : MonoBehaviour
         public int score;
     }
 
+    public static FarmManager instance;
+
     public List<GameObject> animalPrefabs = new List<GameObject>(); // Animal Prefabs
     public List<GameObject> buildingPrefabs = new List<GameObject>(); // Building Prefabs
 
     public Transform farmParentObject;
-    public float generationRadius = 10f; // Generate animals and buildings within this radius
-    public float objectRadius = 2f; // The radius of buildings. Buildings cannot overlap.
+    public float generationRadius = 25f; // Generate animals and buildings within this radius
+    public float objectRadius = 3f; // The radius of buildings. Buildings cannot overlap.
 
     private List<FarmAnimal> animals = new List<FarmAnimal>(); // Existing Animals
     private List<FarmBuilding> buildings = new List<FarmBuilding>(); // Existing Buildings
     private List<AnimalScore> animalScores = new List<AnimalScore>(); // Animal Scores
+
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
 
     void Start()
     {
@@ -37,13 +51,33 @@ public class FarmManager : MonoBehaviour
     void Update()
     {
         // Example usage:
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             AddAnimal("Chicken");
         }
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            AddAnimal("Cow");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            AddAnimal("Dog");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             AddAnimal("Duck");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            AddAnimal("Horse");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            AddAnimal("Pig");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            AddAnimal("Sheep");
         }
     }
 
@@ -101,7 +135,7 @@ public class FarmManager : MonoBehaviour
             if (sameLevelAnimals.Count >= requiredToMerge)
             {
                 // Remove the required number of animals
-                for (int i = 0; i < requiredToMerge; i++)
+                for (int i = 1; i < requiredToMerge; i++)
                 {
                     Destroy(sameLevelAnimals[i].gameObject);
                     animals.Remove(sameLevelAnimals[i]);
@@ -109,15 +143,8 @@ public class FarmManager : MonoBehaviour
 
                 // Create a new higher-level animal
                 int newLevel = level + 1;
-                var animalPrefab = animalPrefabs.Find(prefab => prefab.GetComponent<FarmAnimal>().animalName == animalName);
-                if (animalPrefab != null)
-                {
-                    var newAnimalObject = Instantiate(animalPrefab, GetRandomPosition(), Quaternion.identity, farmParentObject);
-                    var newAnimal = newAnimalObject.GetComponent<FarmAnimal>();
-                    newAnimal.level = newLevel;
-                    newAnimal.transform.localScale = Vector3.one * (1 + (newLevel - 1) * newAnimal.sizeScale);
-                    animals.Add(newAnimal);
-                }
+                sameLevelAnimals[0].level = newLevel;
+                sameLevelAnimals[0].transform.localScale = Vector3.one * (1 + (newLevel - 1) * sameLevelAnimals[0].sizeScale);
 
                 // Return true to indicate a merge happened
                 return true;
@@ -133,7 +160,7 @@ public class FarmManager : MonoBehaviour
         var animalPrefab = animalPrefabs.Find(prefab => prefab.GetComponent<FarmAnimal>().animalName == animalName);
         if (animalPrefab != null)
         {
-            var newAnimalObject = Instantiate(animalPrefab, GetRandomPosition(), Quaternion.identity, farmParentObject);
+            var newAnimalObject = Instantiate(animalPrefab, GetRandomPosition(), Quaternion.Euler(0, Random.Range(0, 360), 0), farmParentObject);
             var newAnimal = newAnimalObject.GetComponent<FarmAnimal>();
             newAnimal.level = 1;
             animals.Add(newAnimal);
@@ -151,7 +178,7 @@ public class FarmManager : MonoBehaviour
         if (currentScore % buildingComponent.requiredScores == 0)
         {
             // Generate a building
-            var newBuildingObject = Instantiate(buildingPrefab, GetRandomPosition(), Quaternion.identity, farmParentObject);
+            var newBuildingObject = Instantiate(buildingPrefab, GetRandomPosition(), Quaternion.Euler(0, Random.Range(0, 360), 0), farmParentObject);
             var newBuilding = newBuildingObject.GetComponent<FarmBuilding>();
             buildings.Add(newBuilding);
 
