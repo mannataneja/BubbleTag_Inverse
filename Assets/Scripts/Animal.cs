@@ -50,11 +50,11 @@ public class Animal : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ground")
         {
-            Debug.Log("Ground Collision");
-            gameObject.GetComponent<Rigidbody>().useGravity = false; //animal floats up after hitting ground
-            StopAnimalSound();
-            rotate = true; //animal spins
-            floating = true;
+            //Debug.Log("Ground Collision");
+            //gameObject.GetComponent<Rigidbody>().useGravity = false; //animal floats up after hitting ground
+            //StopAnimalSound();
+            //rotate = true; //animal spins
+            //floating = true;
             Destroy(gameObject, 2f);
         }
     }

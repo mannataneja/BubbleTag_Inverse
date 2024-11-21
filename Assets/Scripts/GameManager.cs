@@ -25,10 +25,6 @@ public class GameManager : MonoBehaviour
     public TMP_Text missedText;
     public TMP_Text wrongText;
 
-    //public int score = 0;
-    //public int missed = 0;
-    //public int wrong = 0;
-
     public Slider progressBarImage;
     public ParticleSystem progressBarParticleSystem;
 
@@ -41,7 +37,7 @@ public class GameManager : MonoBehaviour
 
     public GameDataCollector collector;
 
-    // Start is called before the first frame update
+
     void Start()
     {
         onAddScore.AddListener(UpdateProgressBar);
@@ -61,6 +57,7 @@ public class GameManager : MonoBehaviour
         }
 
     }
+
     //Updates the current animal to be selected
     public void ChangeCurrentAnimal()
     {
@@ -108,16 +105,13 @@ public class GameManager : MonoBehaviour
                 bubbleSpawners[spawner_i].SpawnBubble(); //Only spawn the bubble in BubbleSpawner. The script is written so that each animal is spawned as a child within each bubble. The game logic checks for child of selected bubble. 
                 yield return new WaitForSeconds(timeBetweenSpawns);
 
-                //correctText.text = "Correct : " + score.ToString();
-                //missedText.text = "Missed : " + missed.ToString();
-                //wrongText.text = "Wrong : " + wrong.ToString();
-
                 correctText.text = "Correct : " + GameData.playerScore.ToString();
                 missedText.text = "Missed : " + GameData.playerMissed.ToString();
                 wrongText.text = "Wrong : " + GameData.playerWrong.ToString();
             }
         }
     }
+
     //Each spawner has animal index which decides which animal to spawn
     //This function randomizes the animal indexes
     public void AnimalIndexShuffle()
@@ -130,16 +124,19 @@ public class GameManager : MonoBehaviour
             animalIndex[r] = tmp;
         }
     }
+
     //Increase score if correct animal is selected
     public void AddScore()
     {   
         //score++;
         GameData.playerScore++;
         AudioManager.instance.playSFX(AudioManager.instance.correctSelection);
+        FarmManager.instance.AddAnimal(currentAnimalTag);
         scoreText.text = "Score : " + GameData.playerScore.ToString();
         onAddScore?.Invoke();
         ChangeCurrentAnimal();
     }
+
     public void EnableDataCanvas()
     {
         dataCanvas.enabled = true;
@@ -151,6 +148,7 @@ public class GameManager : MonoBehaviour
         }
         Time.timeScale = 0;    
     }
+
     public void DisableDataCanvas()
     {
         dataCanvas.enabled = false;

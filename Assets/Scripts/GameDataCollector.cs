@@ -34,12 +34,12 @@ public class GameDataCollector : MonoBehaviour
 
         string data = $"{sessionID},{playerName}, {score}, {missed}, {wrong}";
 
-        using (StreamWriter writer = new StreamWriter(filePath, true))
-        {
-            writer.WriteLine(data);
-        }
+        //using (StreamWriter writer = new StreamWriter(filePath, true))
+        //{
+        //    writer.WriteLine(data);
+        //}
 
-        //File.AppendAllText(filePath, data + "\n");
+        File.AppendAllText(filePath, data + "\n");
 
         Debug.Log("Game data saved.");
     }

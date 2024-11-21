@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 9026474987840030761}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.22622092, y: 0, z: 0}
+  m_LocalPosition: {x: 1.0895922, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -50,12 +50,12 @@ MonoBehaviour:
   currentBubbleMaterial: {fileID: 2100000, guid: a3ae1fba1bf146c488025a419e6dcef0, type: 2}
   dullBubbleMaterial: {fileID: 2100000, guid: 7b166d4a5d7e73d4da50f6a07e5f9f6b, type: 2}
   animals:
-  - {fileID: 1206511787925574, guid: 0d0c6715b520f2342a9643bef65b201c, type: 3}
-  - {fileID: 1287295899898638, guid: 09a6693545db2a44293ef9373e39d355, type: 3}
-  - {fileID: 1522729216997060, guid: f9f5c2a1c6ce96443a0a665da08a3afc, type: 3}
-  - {fileID: 1055064919166404, guid: 82ae6c8102d52e247a7497fc3d8f9476, type: 3}
-  - {fileID: 1965851562501010, guid: e439459add8cd2f46a152bcb80f91024, type: 3}
-  animalIndex: 4
+  - {fileID: 7195679255352304135, guid: 344daf125e34ee34db3637af6911375b, type: 3}
+  - {fileID: 4030139117128818410, guid: 076cadfaf6fecd7418842e5b08a8b1e5, type: 3}
+  - {fileID: 5682361673206459910, guid: 96a6ca6cad88e3b43bce8fd1a667f59d, type: 3}
+  - {fileID: 1184282512666675077, guid: e3972f4bbb6e67347ae63b4b9d46eed9, type: 3}
+  - {fileID: 3974779511236722678, guid: 837734de3ff72074eb693d058896cf30, type: 3}
+  animalIndex: 1
   speed: 0.5
   pop: {fileID: 2182578163321780231}
   animalTag: 
