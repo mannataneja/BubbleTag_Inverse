@@ -25,9 +25,9 @@ public class GameManager : MonoBehaviour
     public TMP_Text missedText;
     public TMP_Text wrongText;
 
-    public int score = 0;
-    public int missed = 0;
-    public int wrong = 0;
+    //public int score = 0;
+    //public int missed = 0;
+    //public int wrong = 0;
 
     public Slider progressBarImage;
     public ParticleSystem progressBarParticleSystem;
@@ -38,6 +38,9 @@ public class GameManager : MonoBehaviour
 
     AudioSource[] audioSources; 
     public Canvas HUD;
+
+    public GameDataCollector collector;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,11 +54,10 @@ public class GameManager : MonoBehaviour
 
     void UpdateProgressBar()
     {
-        if (score <= 100)
+        if (GameData.playerScore <= 100)
         {
-            progressBarImage.value = score * 10;
+            progressBarImage.value = GameData.playerScore * 10;
             progressBarParticleSystem.Play();
-            // Debug.Log(score);
         }
 
     }
@@ -106,9 +108,13 @@ public class GameManager : MonoBehaviour
                 bubbleSpawners[spawner_i].SpawnBubble(); //Only spawn the bubble in BubbleSpawner. The script is written so that each animal is spawned as a child within each bubble. The game logic checks for child of selected bubble. 
                 yield return new WaitForSeconds(timeBetweenSpawns);
 
-                correctText.text = "Correct : " + score.ToString();
-                missedText.text = "Missed : " + missed.ToString();
-                wrongText.text = "Wrong : " + wrong.ToString();
+                //correctText.text = "Correct : " + score.ToString();
+                //missedText.text = "Missed : " + missed.ToString();
+                //wrongText.text = "Wrong : " + wrong.ToString();
+
+                correctText.text = "Correct : " + GameData.playerScore.ToString();
+                missedText.text = "Missed : " + GameData.playerMissed.ToString();
+                wrongText.text = "Wrong : " + GameData.playerWrong.ToString();
             }
         }
     }
@@ -127,9 +133,10 @@ public class GameManager : MonoBehaviour
     //Increase score if correct animal is selected
     public void AddScore()
     {   
-        score++;
+        //score++;
+        GameData.playerScore++;
         AudioManager.instance.playSFX(AudioManager.instance.correctSelection);
-        scoreText.text = "Score : " + score.ToString();
+        scoreText.text = "Score : " + GameData.playerScore.ToString();
         onAddScore?.Invoke();
         ChangeCurrentAnimal();
     }
