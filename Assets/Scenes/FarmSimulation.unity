@@ -490,6 +490,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FarmParentObject
       objectReference: {fileID: 0}
+    - target: {fileID: 6905964355287504085, guid: 89c16cb93deb7f048a18174aa4b1c7d8, type: 3}
+      propertyPath: objectRadius
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7774761042135032034, guid: 89c16cb93deb7f048a18174aa4b1c7d8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

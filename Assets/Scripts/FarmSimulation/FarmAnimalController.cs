@@ -13,6 +13,9 @@ public class FarmAnimalController : MonoBehaviour
     private float rotationSpeed = 5f; // Speed for smooth rotation
     private float waitTime; // Time to wait before next action
     private float actionTimer; // Timer to control actions
+    private float houseFocusProbability = 0.7f; // 70% probability to target near the house
+
+    private List<Transform> buildingPositions = new List<Transform>(); // Cache of building positions
 
     void Start()
     {
@@ -105,7 +108,7 @@ public class FarmAnimalController : MonoBehaviour
             case 1: // Move
                 isMoving = true;
                 animator.SetInteger("Speed", 1); // Walking animation
-                targetPosition = GetRandomPositionWithinRange();
+                targetPosition = GetRandomPositionWithBuildingBias();
                 break;
 
             case 2: // Eating
@@ -129,5 +132,49 @@ public class FarmAnimalController : MonoBehaviour
         randomOffset.y = 0; // Keep the animal on the ground level
 
         return FarmManager.instance.farmParentObject.position + randomOffset;
+    }
+
+    private Vector3 GetRandomPositionWithBuildingBias()
+    {
+        if (FarmManager.instance == null)
+        {
+            Debug.LogError("FarmManager instance is not assigned!");
+            return transform.position;
+        }
+        UpdateBuildingPositions();
+        // Decide whether to target a building or a general farm location
+        if (Random.value < houseFocusProbability && buildingPositions.Count > 0)
+        {
+            // Pick a random building position
+            Transform buildingTransform = buildingPositions[Random.Range(0, buildingPositions.Count)];
+            Vector3 randomOffset = Random.insideUnitSphere * FarmManager.instance.objectRadius; // Add some randomness around the building
+            randomOffset.y = 0; // Keep the animal on the ground level
+            return buildingTransform.position + randomOffset;
+        }
+        else
+        {
+            // Fallback to general farm area
+            Vector3 randomOffset = Random.insideUnitSphere * FarmManager.instance.generationRadius;
+            randomOffset.y = 0; // Keep the animal on the ground level
+            return FarmManager.instance.farmParentObject.position + randomOffset;
+        }
+    }
+
+    private void UpdateBuildingPositions()
+    {
+        if (FarmManager.instance == null) return;
+
+        // Clear the existing building list
+        buildingPositions.Clear();
+
+        // Get buildings for this animal type
+        List<FarmBuilding> buildings = FarmManager.instance.GetBuildingList(GetComponent<FarmAnimal>().animalName);
+        foreach (var building in buildings)
+        {
+            if (building != null)
+            {
+                buildingPositions.Add(building.transform);
+            }
+        }
     }
 }

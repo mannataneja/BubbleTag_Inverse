@@ -250,4 +250,19 @@ public class FarmManager : MonoBehaviour
 
         return position;
     }
+
+    public List<FarmBuilding> GetBuildingList(string animalName)
+    {
+        List<FarmBuilding> buildingList = new List<FarmBuilding>();
+
+        foreach(var building in buildings)
+        {
+            if(building.animalName == animalName)
+            {
+                buildingList.Add(building);
+            }
+        }
+
+        return buildingList;
+    }
 }
