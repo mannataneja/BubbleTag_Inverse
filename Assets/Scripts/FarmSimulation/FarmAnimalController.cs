@@ -5,6 +5,9 @@ using UnityEngine;
 public class FarmAnimalController : MonoBehaviour
 {
     public Animator animator;
+    
+    public bool isCollected = false;
+    int action = 0;
 
     // Movement settings
     private Vector3 targetPosition;
@@ -91,7 +94,11 @@ public class FarmAnimalController : MonoBehaviour
     private void SetNextAction()
     {
         // Randomly decide whether to move, idle, or perform another action
-        int action = Random.Range(0, 3);
+        // int action = Random.Range(0, 3);
+        if (isCollected) 
+        {
+            action = Random.Range(0, 3);
+        }
 
         switch (action)
         {
