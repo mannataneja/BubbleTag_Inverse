@@ -19,6 +19,10 @@ public class FarmManager : MonoBehaviour
     public float generationRadius = 25f; // Generate animals and buildings within this radius
     public float objectRadius = 3f; // The radius of buildings. Buildings cannot overlap.
 
+    public GameObject animalCreationEffect;
+    public GameObject animalUpgradeEffect;
+    public GameObject buildingCreationEffect;
+
     private List<FarmAnimal> animals = new List<FarmAnimal>(); // Existing Animals
     private List<FarmBuilding> buildings = new List<FarmBuilding>(); // Existing Buildings
     private List<AnimalScore> animalScores = new List<AnimalScore>(); // Animal Scores
@@ -102,26 +106,37 @@ public class FarmManager : MonoBehaviour
 
     private void RecursiveMergeAnimals(string animalName)
     {
-        bool merged = true;
+        FarmAnimal lastRemainingAnimal = null;
 
-        // Perform merging until no more merges are possible
-        while (merged)
+        // Continue merging until no further merges can occur
+        while (true)
         {
-            merged = CheckAndMergeAnimals(animalName);
+            FarmAnimal mergedAnimal = CheckAndMergeAnimals(animalName);
+            if (mergedAnimal == null)
+            {
+                break; // Exit loop if no merge occurred
+            }
+            lastRemainingAnimal = mergedAnimal; // Update the last remaining animal after each merge
+        }
+
+        // Trigger the upgrade effect only on the final remaining animal
+        if (lastRemainingAnimal != null)
+        {
+            Instantiate(animalUpgradeEffect, lastRemainingAnimal.transform.position, lastRemainingAnimal.transform.rotation);
         }
     }
 
-    public bool CheckAndMergeAnimals(string animalName)
+
+    public FarmAnimal CheckAndMergeAnimals(string animalName)
     {
-        // Find animals with the same name
+        // Find all animals with the same name
         var sameAnimals = animals.FindAll(a => a.animalName == animalName);
 
-        // Group by level and check mergingRequirement
         foreach (var animal in sameAnimals)
         {
             int level = animal.level;
 
-            // Skip merging if the animal has reached max level
+            // Skip animals that have already reached the maximum level
             if (level >= animal.maxLevel)
             {
                 continue;
@@ -132,39 +147,60 @@ public class FarmManager : MonoBehaviour
             // Find animals with the same level
             var sameLevelAnimals = sameAnimals.FindAll(a => a.level == level);
 
+            // Check if there are enough animals to perform a merge
             if (sameLevelAnimals.Count >= requiredToMerge)
             {
-                // Remove the required number of animals
+                // Remove extra animals required for the merge
                 for (int i = 1; i < requiredToMerge; i++)
                 {
                     Destroy(sameLevelAnimals[i].gameObject);
                     animals.Remove(sameLevelAnimals[i]);
                 }
 
-                // Create a new higher-level animal
+                // Upgrade the remaining animal
                 int newLevel = level + 1;
-                sameLevelAnimals[0].level = newLevel;
-                sameLevelAnimals[0].transform.localScale = Vector3.one * (1 + (newLevel - 1) * sameLevelAnimals[0].sizeScale);
+                var mergedAnimal = sameLevelAnimals[0];
+                mergedAnimal.level = newLevel;
+                mergedAnimal.transform.localScale = Vector3.one * (1 + (newLevel - 1) * mergedAnimal.sizeScale);
 
-                // Return true to indicate a merge happened
-                return true;
+                // Return the upgraded animal to indicate a merge occurred
+                return mergedAnimal;
             }
         }
 
-        // Return false if no merge occurred
-        return false;
+        // Return null if no merge occurred
+        return null;
     }
+
 
     public void GenerateNewAnimal(string animalName)
     {
+        // Find the corresponding prefab for the animal
         var animalPrefab = animalPrefabs.Find(prefab => prefab.GetComponent<FarmAnimal>().animalName == animalName);
         if (animalPrefab != null)
         {
+            // Instantiate the animal
             var newAnimalObject = Instantiate(animalPrefab, GetRandomPosition(), Quaternion.Euler(0, Random.Range(0, 360), 0), farmParentObject);
             var newAnimal = newAnimalObject.GetComponent<FarmAnimal>();
             newAnimal.level = 1;
+
+            // Check if the new animal will trigger a merge
+            if (!CanTriggerImmediateMerge(newAnimal))
+            {
+                // Play the creation effect only if no immediate merge occurs
+                Instantiate(animalCreationEffect, newAnimalObject.transform.position, newAnimalObject.transform.rotation);
+            }
+
+            // Add the new animal to the list
             animals.Add(newAnimal);
         }
+    }
+
+    // Check if the newly generated animal will trigger a merge
+    private bool CanTriggerImmediateMerge(FarmAnimal newAnimal)
+    {
+        var sameAnimals = animals.FindAll(a => a.animalName == newAnimal.animalName && a.level == newAnimal.level);
+        return sameAnimals.Count + 1 >= newAnimal.mergingRequirement;
     }
 
     public void CheckAndGenerateBuilding(string animalName, int currentScore)
@@ -180,6 +216,7 @@ public class FarmManager : MonoBehaviour
             // Generate a building
             var newBuildingObject = Instantiate(buildingPrefab, GetRandomPosition(), Quaternion.Euler(0, Random.Range(0, 360), 0), farmParentObject);
             var newBuilding = newBuildingObject.GetComponent<FarmBuilding>();
+            Instantiate(buildingCreationEffect, newBuildingObject.transform.position, newBuildingObject.transform.rotation);
             buildings.Add(newBuilding);
 
             Debug.Log($"Built a {newBuilding.buildingName} for {animalName}!");
