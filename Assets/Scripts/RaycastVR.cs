@@ -60,14 +60,14 @@ public class RaycastVR : MonoBehaviour
                         Debug.Log(selection.transform.parent.GetComponent<Bubbles>().animalTag);
                         if (selection.transform.parent.GetComponent<Bubbles>().animalTag == gameManager.currentAnimalTag)
                         {
-                           // gameManager.AddScore();
                             StartCoroutine(selection.transform.parent.GetComponent<Bubbles>().PopBubble());
                         }
                         else
                         {
                             Debug.Log("Wrong Selection");
                             AudioManager.instance.playSFX(AudioManager.instance.wrongSelection);
-                            gameManager.wrong++;
+                            //gameManager.wrong++;
+                            GameData.playerWrong++;
                         }
 
                     }
@@ -83,27 +83,6 @@ public class RaycastVR : MonoBehaviour
                     }
                 }
             }
-        }
-
-
-        //if (Physics.Raycast(transform.position, transform.forward, out hit))
-        //{
-        //    if (OVRInput.Get(OVRInput.RawButton.RIndexTrigger))
-        //    {
-        //        selection = hit.transform;
-        //        if (selection.transform.parent.GetComponent<Bubbles>().animalTag == gameManager.currentAnimalTag)
-        //        {
-        //            gameManager.AddScore();
-        //            StartCoroutine(selection.transform.parent.GetComponent<Bubbles>().PopBubble());
-        //            Debug.Log("hit");
-        //        }
-        //        else
-        //        {
-        //            Debug.Log("Wrong Selection");
-        //        }
-
-        //    }
-        //}
-            
+        }   
     }
 }

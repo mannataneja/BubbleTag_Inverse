@@ -66,7 +66,8 @@ public class Selection : MonoBehaviour
                     else
                     {
                         Debug.Log("Wrong Selection");
-                        gameManager.wrong++;
+                        //gameManager.wrong++;
+                        GameData.playerWrong++;
                     }
                     
                 }

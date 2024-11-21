@@ -54,7 +54,8 @@ public class Bubbles : MonoBehaviour
             if(animal.GetComponent<Animal>().isCurrentAnimal)
             {
                 gameManager.currentAnimalExists = false;
-                gameManager.missed++;
+                //gameManager.missed++;
+                GameData.playerMissed++;
             }
             Destroy(gameObject);
         }
