@@ -69,7 +69,8 @@ public class Selection : MonoBehaviour
                         Debug.Log("Wrong Selection");
                         AudioManager.instance.playSFX(AudioManager.instance.wrongSelection);
                         StartCoroutine(SetWrongSelectionColor());
-                        gameManager.wrong++;
+                        GameData.playerWrong++;
+
                     }
                     
                 }
