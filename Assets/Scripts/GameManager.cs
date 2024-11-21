@@ -131,6 +131,7 @@ public class GameManager : MonoBehaviour
         //score++;
         GameData.playerScore++;
         AudioManager.instance.playSFX(AudioManager.instance.correctSelection);
+        FarmManager.instance.AddAnimal(currentAnimalTag);
         scoreText.text = "Score : " + GameData.playerScore.ToString();
         onAddScore?.Invoke();
         ChangeCurrentAnimal();

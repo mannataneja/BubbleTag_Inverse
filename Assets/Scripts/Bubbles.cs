@@ -78,11 +78,12 @@ public class Bubbles : MonoBehaviour
             pop.Play();
             Destroy(bubble);
             //animal.GetComponent<Animal>().StopAnimalSound();
-            animalRB.useGravity = true;
+            //animalRB.useGravity = true;
             animalCollider.isTrigger = false;
             animal.transform.parent = null;
             yield return new WaitForSeconds(0.2f);
             Destroy(gameObject);
+            Destroy(animal);
         }
     }
 }
