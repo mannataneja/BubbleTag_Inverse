@@ -39,6 +39,10 @@ public class Animal : MonoBehaviour
             Debug.Log("roatating");
             transform.Rotate(1, 1, 1);
         }
+        if (selectable)
+        {
+            gameObject.transform.parent.GetComponent<Bubbles>().SetCurrentBubbleMaterial();
+        }
     }
     //Check for animal colliding with the ground when it falls after bubble pop
     //Make animal spin and float away before destroying
@@ -66,7 +70,7 @@ public class Animal : MonoBehaviour
     {
         yield return new WaitForSeconds(manager.timeBetweenSpawns); //wait after spawning
         selectable = true; //make it interactable
-        gameObject.transform.parent.GetComponent<Bubbles>().SetCurrentBubbleMaterial(); //make bubble selectable/transparent color
+        //gameObject.transform.parent.GetComponent<Bubbles>().SetCurrentBubbleMaterial(); //make bubble selectable/transparent color
         gameObject.GetComponent<AudioSource>().Play(); //play animal sound
         yield return new WaitForSeconds(manager.timeBetweenSpawns - 0.5f); //wait before making it un-selectable
         selectable = false;
