@@ -4,11 +4,11 @@ using System.Threading.Tasks;
 using UnityEngine;
 
 /// <summary>
-/// This sample shows you how to implement a scene gameManager with the following features:
+/// This sample shows you how to implement a scene manager with the following features:
 ///   * Fetch all room scene anchors
 ///   * Fetch all child scene anchors of a room
 ///   * Set the location, and name of the object as label
-///   * SpawnAnimals primitive geometry to match the scene anchor's plane, volume or mesh data
+///   * Spawn primitive geometry to match the scene anchor's plane, volume or mesh data
 ///
 /// There is a fallback for running scene capture if no rooms were found.
 /// </summary>

@@ -7,7 +7,7 @@ using UnityEngine;
 using DynamicSceneManagerHelper;
 
 /// <summary>
-/// This sample expands on the snapshot scene gameManager and adds the ability
+/// This sample expands on the snapshot scene manager and adds the ability
 /// to update Unity game objects as the data changes through the snapshots.
 /// </summary>
 /// <remarks>
