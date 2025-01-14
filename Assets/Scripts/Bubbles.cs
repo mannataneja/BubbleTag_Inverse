@@ -8,6 +8,7 @@ public class Bubbles : MonoBehaviour
     public GameObject bubble;
     public Material currentBubbleMaterial;
     public Material dullBubbleMaterial;
+    public Material flickerMaterial;
 
     public GameObject[] animals;
     public int animalIndex; //animalIndex is passed from GameManager
@@ -67,6 +68,10 @@ public class Bubbles : MonoBehaviour
     public void SetDullBubbleMaterial()
     {
         transform.GetChild(0).GetComponent<MeshRenderer>().material = dullBubbleMaterial;
+    }
+    public void SetFlickerMaterial()
+    {
+        transform.GetChild(0).GetComponent<MeshRenderer>().material = flickerMaterial;
     }
     //Bubble is popped if correct animal is selected
     public IEnumerator PopBubble() 

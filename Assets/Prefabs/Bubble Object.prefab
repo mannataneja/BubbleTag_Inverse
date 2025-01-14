@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 9026474987840030761}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.07782676, y: 0, z: 0}
+  m_LocalPosition: {x: 0.47615737, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -49,6 +49,7 @@ MonoBehaviour:
   bubble: {fileID: 5872225962145305764}
   currentBubbleMaterial: {fileID: 2100000, guid: a3ae1fba1bf146c488025a419e6dcef0, type: 2}
   dullBubbleMaterial: {fileID: 2100000, guid: 7b166d4a5d7e73d4da50f6a07e5f9f6b, type: 2}
+  flickerMaterial: {fileID: 2100000, guid: f50809dd470aba74e923b6b59d86dc12, type: 2}
   animals:
   - {fileID: 7195679255352304135, guid: 344daf125e34ee34db3637af6911375b, type: 3}
   - {fileID: 4030139117128818410, guid: 076cadfaf6fecd7418842e5b08a8b1e5, type: 3}

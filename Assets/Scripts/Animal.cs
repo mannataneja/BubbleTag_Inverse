@@ -39,7 +39,7 @@ public class Animal : MonoBehaviour
             Debug.Log("roatating");
             transform.Rotate(1, 1, 1);
         }
-        if (selectable)
+        if (selectable && !isCurrentAnimal)
         {
             gameObject.transform.parent.GetComponent<Bubbles>().SetCurrentBubbleMaterial();
         }
@@ -62,7 +62,8 @@ public class Animal : MonoBehaviour
     {
         if (animalTag == manager.currentAnimalTag)
         {
-            isCurrentAnimal = true; 
+            isCurrentAnimal = true;
+            gameObject.transform.parent.GetComponent<Bubbles>().SetFlickerMaterial();
         }
     }
     //Play sound of current animal
@@ -74,7 +75,11 @@ public class Animal : MonoBehaviour
         gameObject.GetComponent<AudioSource>().Play(); //play animal sound
         yield return new WaitForSeconds(manager.timeBetweenSpawns - 0.5f); //wait before making it un-selectable
         selectable = false;
-        gameObject.transform.parent.GetComponent<Bubbles>().SetDullBubbleMaterial();
+        if (!isCurrentAnimal)
+        {
+            gameObject.transform.parent.GetComponent<Bubbles>().SetDullBubbleMaterial();
+
+        }
         gameObject.GetComponent<AudioSource>().Stop();
     }
     public void StopAnimalSound()
