@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bubble: {fileID: 5872225962145305764}
-  currentBubbleMaterial: {fileID: 2100000, guid: a3ae1fba1bf146c488025a419e6dcef0, type: 2}
+  currentBubbleMaterial: {fileID: 2100000, guid: 5ce21f1ecf4297d46bea7391cd0bf22d, type: 2}
   dullBubbleMaterial: {fileID: 2100000, guid: 7b166d4a5d7e73d4da50f6a07e5f9f6b, type: 2}
   flickerMaterial: {fileID: 2100000, guid: f50809dd470aba74e923b6b59d86dc12, type: 2}
   animals:
