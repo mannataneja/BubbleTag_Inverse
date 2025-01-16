@@ -848,57 +848,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cb8213282cf46b40be8193143343263, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &291144889
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 291144890}
-  - component: {fileID: 291144891}
-  m_Layer: 0
-  m_Name: DistractorBubble
-  m_TagString: Untagged
-  m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &291144890
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 291144889}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.6427878, z: 0, w: -0.76604426}
-  m_LocalPosition: {x: -4.35, y: 3.3, z: 1.7600001}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 952184947}
-  m_LocalEulerAnglesHint: {x: 0, y: -280, z: 0}
---- !u!114 &291144891
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 291144889}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e584a1c27400494a934d18eb33e6add, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bubble: {fileID: 4691606843475067291, guid: 0b087e32eecf45644a7d33640547e19e, type: 3}
-  distractorBubble: 1
-  spawnDistractorLocations:
-  - {fileID: 1291186379}
-  - {fileID: 2097552825}
-  - {fileID: 2097552825}
-  - {fileID: 1302818594}
 --- !u!1001 &315901918
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2342,6 +2291,57 @@ Transform:
   - {fileID: 106701289}
   m_Father: {fileID: 315901920}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &914741849
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 914741850}
+  - component: {fileID: 914741851}
+  m_Layer: 0
+  m_Name: DistractorBubble
+  m_TagString: Untagged
+  m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &914741850
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914741849}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.66, y: 5.18, z: -2.54}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 952184947}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &914741851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914741849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e87cf43dc91c8584b9d1a1bb22a04c67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distractorBubble: {fileID: 6543881235898306849, guid: 2940de2a03090bf46930dfb652128fea, type: 3}
+  spawnDistractorLocations:
+  - {fileID: 979193875}
+  - {fileID: 1291186379}
+  - {fileID: 2097552825}
+  - {fileID: 2002551012}
+  - {fileID: 1302818594}
 --- !u!1 &952184946
 GameObject:
   m_ObjectHideFlags: 0
@@ -2373,10 +2373,10 @@ Transform:
   m_Children:
   - {fileID: 979193875}
   - {fileID: 1291186379}
-  - {fileID: 291144890}
   - {fileID: 2097552825}
   - {fileID: 2002551012}
   - {fileID: 1302818594}
+  - {fileID: 914741850}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &979193874
@@ -2424,12 +2424,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bubble: {fileID: 4691606843475067291, guid: 0b087e32eecf45644a7d33640547e19e, type: 3}
-  distractorBubble: 0
-  spawnDistractorLocations:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1 &1017978276
 GameObject:
   m_ObjectHideFlags: 0
@@ -2940,12 +2934,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bubble: {fileID: 4691606843475067291, guid: 0b087e32eecf45644a7d33640547e19e, type: 3}
-  distractorBubble: 0
-  spawnDistractorLocations:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1 &1302818593
 GameObject:
   m_ObjectHideFlags: 0
@@ -2991,12 +2979,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bubble: {fileID: 4691606843475067291, guid: 0b087e32eecf45644a7d33640547e19e, type: 3}
-  distractorBubble: 0
-  spawnDistractorLocations:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1 &1443509140
 GameObject:
   m_ObjectHideFlags: 0
@@ -9756,12 +9738,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bubble: {fileID: 4691606843475067291, guid: 0b087e32eecf45644a7d33640547e19e, type: 3}
-  distractorBubble: 0
-  spawnDistractorLocations:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1 &2097552824
 GameObject:
   m_ObjectHideFlags: 0
@@ -9807,12 +9783,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bubble: {fileID: 4691606843475067291, guid: 0b087e32eecf45644a7d33640547e19e, type: 3}
-  distractorBubble: 0
-  spawnDistractorLocations:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
