@@ -43,7 +43,7 @@ public class RaycastVR : MonoBehaviour
                 highlight = null;
             }
 
-            if (OVRInput.Get(OVRInput.RawButton.RIndexTrigger))
+            if (OVRInput.GetDown(OVRInput.RawButton.RIndexTrigger))
             {
                 Debug.Log(hit);
 
