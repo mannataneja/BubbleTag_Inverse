@@ -12,12 +12,13 @@ public class GameMenuManager : MonoBehaviour
     [SerializeField] private CustomButton exitButton;
     [SerializeField] private CustomButton backButton;
 
-    bool quitCalled = false;
+    //bool quitCalled = false;
+
     public void Update()
     {
         if (viewDataBtn.IsButtonHighlighted())
         {
-            if (OVRInput.Get(OVRInput.Button.One))
+            if (OVRInput.GetDown(OVRInput.Button.One))
             {
                 gameManager.EnableDataCanvas();
             }
@@ -25,7 +26,7 @@ public class GameMenuManager : MonoBehaviour
         
         if (CloseBtn.IsButtonHighlighted())
         {
-            if (OVRInput.Get(OVRInput.Button.One))
+            if (OVRInput.GetDown(OVRInput.Button.One))
             {
                 gameManager.DisableDataCanvas();
             }
@@ -33,20 +34,20 @@ public class GameMenuManager : MonoBehaviour
       
         if(exitButton.IsButtonHighlighted())
         {
-            if (OVRInput.Get(OVRInput.Button.One))
+            if (OVRInput.GetDown(OVRInput.Button.One))
             {
-                if (!quitCalled)
-                {
-                    gameDataCollector.LogGameData(GameData.playerName, GameData.playerScore, GameData.playerMissed, GameData.playerWrong);
-                    quitCalled = true;
-                    Application.Quit();
-                }
+                gameDataCollector.LogGameData(GameData.playerName, GameData.playerScore, GameData.playerMissed, GameData.playerWrong);
+                Application.Quit();
+                //if (!quitCalled)
+                //{
+                //  quitCalled = true;
+                //}
             }
         }
 
         if (backButton.IsButtonHighlighted())
         {
-            if (OVRInput.Get(OVRInput.Button.One))
+            if (OVRInput.GetDown(OVRInput.Button.One))
             {
                 SceneManager.LoadScene(0);
             }

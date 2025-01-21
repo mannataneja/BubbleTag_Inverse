@@ -34,7 +34,7 @@ public class StartMenuManager : MonoBehaviour
             
             if (startBtn.IsButtonHighlighted())
             {
-                if (OVRInput.Get(OVRInput.Button.One))
+                if (OVRInput.GetDown(OVRInput.Button.One))
                 {
                     StartGame_Btn();
                 }
@@ -42,7 +42,7 @@ public class StartMenuManager : MonoBehaviour
             
             if (startTutorialBtn.IsButtonHighlighted())
             {
-                if (OVRInput.Get(OVRInput.Button.One))
+                if (OVRInput.GetDown(OVRInput.Button.One))
                 {
                     StartTutorial_Btn();
                 }
