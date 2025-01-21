@@ -5,12 +5,14 @@ using UnityEngine;
 public class DistractorBubble : MonoBehaviour
 {
     public GameObject[] animals;
+    public GameManager gameManager;
 
     public float distractorSpeed = 5f;
     float distractorMaxHeight = 3f;
-    private GameManager gameManager;
     private int animalIndex;
-    GameObject animal;
+    private GameObject animal;
+
+    
 
     private void Start()
     {
@@ -20,7 +22,7 @@ public class DistractorBubble : MonoBehaviour
     }
     private void Awake()
     {
-        InstantiateAnimal();
+        //InstantiateAnimal();
     }
 
     void Update()

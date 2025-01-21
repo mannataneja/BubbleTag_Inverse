@@ -7,8 +7,11 @@ public class DistractorBubbleSpawner : MonoBehaviour
     public DistractorBubble distractorBubble;
     public Transform[] spawnDistractorLocations = new Transform[4];
 
+    [SerializeField] GameManager gameManager;
+
     private void Start()
     {
+        distractorBubble.gameManager = gameManager;
         spawnDistractorBubble();
     }
 
