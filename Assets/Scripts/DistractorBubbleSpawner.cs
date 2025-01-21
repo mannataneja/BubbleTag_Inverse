@@ -17,11 +17,11 @@ public class DistractorBubbleSpawner : MonoBehaviour
 
     public void spawnDistractorBubble()
     {
-        Debug.Log("sntg");
         Instantiate(distractorBubble, spawnDistractorLocations[Random.Range(0, (spawnDistractorLocations.Length - 1))]);
-        Vector3 temp = distractorBubble.transform.position;
-        temp.x += Random.Range(-0.3f, 0.3f);
-        distractorBubble.transform.position = temp;
-        temp = new Vector3(0, 0, 0);
+        //Instantiate(distractorBubble, transform);
+        //Vector3 temp = distractorBubble.transform.position;
+        //temp.x += Random.Range(-0.3f, 0.3f);
+        //distractorBubble.transform.position = temp;
+        //temp = new Vector3(0, 0, 0);
     }
 }

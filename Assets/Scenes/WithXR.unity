@@ -3798,7 +3798,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e87cf43dc91c8584b9d1a1bb22a04c67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distractorBubble: {fileID: 6543881235898306849, guid: 2940de2a03090bf46930dfb652128fea, type: 3}
+  distractorBubble: {fileID: 1743672269011821733, guid: 42bde44534bb9bc489bf402b9226d455, type: 3}
   spawnDistractorLocations:
   - {fileID: 979193875}
   - {fileID: 1291186379}

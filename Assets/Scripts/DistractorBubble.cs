@@ -6,23 +6,25 @@ public class DistractorBubble : MonoBehaviour
 {
     public GameObject[] animals;
     public GameManager gameManager;
+    [SerializeField] Transform animalPlaceholder;
 
-    public float distractorSpeed = 5f;
-    float distractorMaxHeight = 3f;
+    public float distractorSpeed = 0.5f;
+    float distractorMaxHeight = 7f;
     private int animalIndex;
-    private GameObject animal;
 
     
 
     private void Start()
     {
+        
         gameManager = GameObject.FindAnyObjectByType<GameManager>();
-        animal = transform.GetChild(transform.childCount - 1).gameObject;
-        animal.GetComponent<Rigidbody>().useGravity = true;
+        //animal = transform.GetChild(transform.childCount - 1).gameObject;
+        //animal.GetComponent<Rigidbody>().useGravity = true;
     }
+
     private void Awake()
     {
-        //InstantiateAnimal();
+        InstantiateAnimal();
     }
 
     void Update()
@@ -31,8 +33,9 @@ public class DistractorBubble : MonoBehaviour
 
         if (transform.position.y >= distractorMaxHeight)
         {
-            GameObject.FindAnyObjectByType<DistractorBubbleSpawner>().spawnDistractorBubble();
+            Destroy(animals[animalIndex]);
             Destroy(gameObject);
+            GameObject.FindAnyObjectByType<DistractorBubbleSpawner>().spawnDistractorBubble();
         }
     }
 
@@ -43,6 +46,8 @@ public class DistractorBubble : MonoBehaviour
         {
             animalIndex = Random.Range(0, (animals.Length - 1));
         }
-        Instantiate(animals[animalIndex], transform);
+        Instantiate(animals[animalIndex], transform.position, Quaternion.identity, animalPlaceholder);
+        //Instantiate(animals[animalIndex], animalPlaceholder);
+        animals[animalIndex].GetComponent<Rigidbody>().useGravity = true;
     }
 }
