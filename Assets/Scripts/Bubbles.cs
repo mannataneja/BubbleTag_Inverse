@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Bubbles : MonoBehaviour
 {
+    public bool isDistractor = false;
     public GameObject bubble;
     public Material currentBubbleMaterial;
     public Material dullBubbleMaterial;
@@ -12,6 +13,7 @@ public class Bubbles : MonoBehaviour
 
     public GameObject[] animals;
     public int animalIndex; //animalIndex is passed from GameManager
+    public string animalTag;
 
     public float speed = 5f;
     public ParticleSystem pop;
@@ -22,7 +24,7 @@ public class Bubbles : MonoBehaviour
     GameObject animal;
     Rigidbody animalRB;
     Collider animalCollider;
-    public string animalTag;
+
 
     GameManager gameManager;
 
@@ -31,7 +33,26 @@ public class Bubbles : MonoBehaviour
         gameManager = GameObject.FindAnyObjectByType<GameManager>();
 
         //SpawnAnimals animal as soon as bubble is spawned. Animal index is passed from Game Manager
-        Instantiate(animals[animalIndex], transform);
+        if (!isDistractor)
+        {
+            Instantiate(animals[animalIndex], transform);
+        }
+        if (isDistractor)
+        {
+            animalIndex = Random.Range(0, gameManager.animalIndex.Length);
+            if (animalIndex == gameManager.currentAnimalIndex)
+            {
+                if (animalIndex < gameManager.animalIndex.Length - 1)
+                {
+                    animalIndex++;
+                }
+                else
+                {
+                    animalIndex--;
+                }
+            }
+            Instantiate(animals[animalIndex], transform);
+        }
 
         //Get the transform of newly spawned animal
         animal = transform.GetChild(transform.childCount - 1).gameObject;
@@ -43,7 +64,12 @@ public class Bubbles : MonoBehaviour
         animalCollider.isTrigger = true;
 
         // originalBubbleMaterial = transform.GetChild(0).GetComponent<MeshRenderer>().material;
-        
+
+        if (isDistractor)
+        {
+            Debug.Log("I am distractor" + gameObject.name);
+            SetFlickerMaterial();
+        }
     }
     void Update()
     {
@@ -63,11 +89,17 @@ public class Bubbles : MonoBehaviour
     }
     public void SetCurrentBubbleMaterial()
     {
-        transform.GetChild(0).GetComponent<MeshRenderer>().material = currentBubbleMaterial;
+        if (!isDistractor)
+        {
+            transform.GetChild(0).GetComponent<MeshRenderer>().material = currentBubbleMaterial;
+        }
     }
     public void SetDullBubbleMaterial()
     {
-        transform.GetChild(0).GetComponent<MeshRenderer>().material = dullBubbleMaterial;
+        if(!isDistractor)
+        {
+            transform.GetChild(0).GetComponent<MeshRenderer>().material = dullBubbleMaterial;
+        }
     }
     public void SetFlickerMaterial()
     {

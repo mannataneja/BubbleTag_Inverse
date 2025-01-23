@@ -91,7 +91,7 @@ public class Selection : MonoBehaviour
     {
         originalMaterialHighlight = highlight.GetComponent<MeshRenderer>().material;
         selection.GetComponent<MeshRenderer>().material = redMaterial;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(3f);
         selection.GetComponent<MeshRenderer>().material = originalMaterialHighlight;
     }
 

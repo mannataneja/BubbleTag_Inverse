@@ -39,7 +39,7 @@ public class Animal : MonoBehaviour
             Debug.Log("roatating");
             transform.Rotate(1, 1, 1);
         }
-        if (selectable && !isCurrentAnimal)
+        if (selectable && !isCurrentAnimal) //Do not chnage material of current animal as it is set to always flicker
         {
             gameObject.transform.parent.GetComponent<Bubbles>().SetCurrentBubbleMaterial();
         }
@@ -75,7 +75,7 @@ public class Animal : MonoBehaviour
         gameObject.GetComponent<AudioSource>().Play(); //play animal sound
         yield return new WaitForSeconds(manager.timeBetweenSpawns - 0.5f); //wait before making it un-selectable
         selectable = false;
-        if (!isCurrentAnimal)
+        if (!isCurrentAnimal) //Do not change material of current animal as it is set to always flicker
         {
             gameObject.transform.parent.GetComponent<Bubbles>().SetDullBubbleMaterial();
 
