@@ -9,22 +9,23 @@ public class GameDataCollector : MonoBehaviour
 
     void Start()
     {
-        filePath = Path.Combine(Application.persistentDataPath, "gameData.csv");
+        filePath = Path.Combine(Application.persistentDataPath, "BubbleGameData.csv");
 
         if (!File.Exists(filePath))
         {
             string headers = "SessionID,PlayerName,Score,Missed,Wrong";
-            //File.WriteAllText(filePath, headers + "\n");
+
             WriteCSVHeader(headers);
         }
     }
 
     void WriteCSVHeader(string headers)
     {
-        using (StreamWriter writer = new StreamWriter(filePath, true))
-        {
-            writer.WriteLine(headers);
-        }
+        //using (StreamWriter writer = new StreamWriter(filePath, true))
+        //{
+        //    writer.WriteLine(headers);
+        //}
+        File.WriteAllText(filePath, headers + "\n");
     }
 
 

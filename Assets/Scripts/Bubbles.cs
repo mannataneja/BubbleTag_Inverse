@@ -13,6 +13,7 @@ public class Bubbles : MonoBehaviour
 
     public GameObject[] animals;
     public int animalIndex; //animalIndex is passed from GameManager
+    public string animalTag;
 
     public float speed = 5f;
     public ParticleSystem pop;
@@ -23,7 +24,7 @@ public class Bubbles : MonoBehaviour
     GameObject animal;
     Rigidbody animalRB;
     Collider animalCollider;
-    public string animalTag;
+
 
     GameManager gameManager;
 
@@ -38,7 +39,7 @@ public class Bubbles : MonoBehaviour
         }
         if (isDistractor)
         {
-            animalIndex = Random.Range(0, gameManager.animalIndex.Length + 1);
+            animalIndex = Random.Range(0, gameManager.animalIndex.Length);
             if (animalIndex == gameManager.currentAnimalIndex)
             {
                 if (animalIndex < gameManager.animalIndex.Length - 1)
