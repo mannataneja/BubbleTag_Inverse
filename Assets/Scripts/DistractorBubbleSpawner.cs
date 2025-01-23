@@ -10,6 +10,7 @@ public class DistractorBubbleSpawner : MonoBehaviour
     public Transform[] spawnDistractorLocations = new Transform[4];
 
     public Material flickerMaterial;
+    [SerializeField] float distractorBubblePercentage;
 
     int distractorAnimalIndex;
     private void Start()
@@ -23,6 +24,7 @@ public class DistractorBubbleSpawner : MonoBehaviour
         {
             Debug.Log("sntg");
 
+            int numberOfDistractorSpawners = GetPrecentageofDistractors(distractorBubblePercentage);
             GameObject newDistacrtorBubble = Instantiate(distractorBubble, spawnDistractorLocations[Random.Range(0, numberOfDistractorSpawners)]);
             newDistacrtorBubble.GetComponent<Bubbles>().SetFlickerMaterial();
             newDistacrtorBubble.GetComponent<Bubbles>().isDistractor = true;
@@ -34,6 +36,11 @@ public class DistractorBubbleSpawner : MonoBehaviour
 
             yield return new WaitForSeconds(spawnInterval);
         }
+    }
 
+    public int GetPrecentageofDistractors(float distractorBubblePercentage)
+    {
+        int noDistractorBubblePercentage = (int)((distractorBubblePercentage / 100) * numberOfDistractorSpawners);
+        return noDistractorBubblePercentage;
     }
 }
