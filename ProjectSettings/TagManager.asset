@@ -18,6 +18,8 @@ TagManager:
   - Sheep
   - Ground
   - ViewData
+  - GameManager
+  - DistactorSpawnPoint
   layers:
   - Default
   - TransparentFX

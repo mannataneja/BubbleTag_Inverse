@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 9026474987840030761}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.7677391, y: 0, z: 0}
+  m_LocalPosition: {x: -2.0091727, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d74aa818d86ed942b74674de39bc04d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDistractor: 0
   bubble: {fileID: 5872225962145305764}
   currentBubbleMaterial: {fileID: 2100000, guid: 5ce21f1ecf4297d46bea7391cd0bf22d, type: 2}
   dullBubbleMaterial: {fileID: 2100000, guid: 7b166d4a5d7e73d4da50f6a07e5f9f6b, type: 2}

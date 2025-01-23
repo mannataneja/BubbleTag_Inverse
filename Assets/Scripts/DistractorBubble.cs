@@ -12,16 +12,21 @@ public class DistractorBubble : MonoBehaviour
     private int animalIndex;
     GameObject animal;
 
-    private void Start()
-    {
-        gameManager = GameObject.FindAnyObjectByType<GameManager>();
-        animal = transform.GetChild(transform.childCount - 1).gameObject;
-        animal.GetComponent<Rigidbody>().useGravity = true;
-    }
     private void Awake()
     {
-        InstantiateAnimal();
+       // InstantiateAnimal();
     }
+    private void Start()
+    {
+        //gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+
+        animalIndex = Random.Range(0, (animals.Length - 1));
+        Instantiate(animals[animalIndex], transform);
+
+        animal = transform.GetChild(transform.childCount - 1).gameObject;
+        animal.GetComponent<Rigidbody>().useGravity = false;
+    }
+
 
     void Update()
     {
@@ -37,10 +42,10 @@ public class DistractorBubble : MonoBehaviour
     void InstantiateAnimal()
     {
         animalIndex = Random.Range(0, (animals.Length - 1));
-        while (gameManager.currentAnimalIndex == animalIndex)
+/*        while (gameManager != null && gameManager.currentAnimalIndex == animalIndex)
         {
             animalIndex = Random.Range(0, (animals.Length - 1));
-        }
+        }*/
         Instantiate(animals[animalIndex], transform);
     }
 }
