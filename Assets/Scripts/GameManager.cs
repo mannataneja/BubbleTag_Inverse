@@ -80,6 +80,7 @@ public class GameManager : MonoBehaviour
     //Assign the shuffled animal indexes to each spawner and call the spawner
     public IEnumerator SpawnAnimals()
     {
+        GameData.StartTimer();
         while(true)
         {
             AnimalIndexShuffle();

@@ -112,6 +112,7 @@ public class Bubbles : MonoBehaviour
         {
             gameManager.currentAnimalExists = false;
             gameManager.AddScore();
+            GameData.EndTimer();
             pop.Play();
             Destroy(bubble);
             //animal.GetComponent<Animal>().StopAnimalSound();

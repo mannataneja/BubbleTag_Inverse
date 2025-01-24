@@ -15,17 +15,15 @@ public class DistractorBubbleSpawner : MonoBehaviour
     int distractorAnimalIndex;
     private void Start()
     {
-        StartCoroutine(spawnDistractorBubble());
+        SpawnMultipledistractorBubbles();
     }
 
     public IEnumerator spawnDistractorBubble()
     {
         while (true)
         {
-            Debug.Log("sntg");
-
-            int numberOfDistractorSpawners = GetPrecentageofDistractors(distractorBubblePercentage);
-            GameObject newDistacrtorBubble = Instantiate(distractorBubble, spawnDistractorLocations[Random.Range(0, numberOfDistractorSpawners)]);
+            GetPrecentageofDistractors(distractorBubblePercentage);
+            GameObject newDistacrtorBubble = Instantiate(distractorBubble, spawnDistractorLocations[Random.Range(0, GetPrecentageofDistractors(distractorBubblePercentage))]);
             newDistacrtorBubble.GetComponent<Bubbles>().SetFlickerMaterial();
             newDistacrtorBubble.GetComponent<Bubbles>().isDistractor = true;
 
@@ -42,5 +40,14 @@ public class DistractorBubbleSpawner : MonoBehaviour
     {
         int noDistractorBubblePercentage = (int)((distractorBubblePercentage / 100) * numberOfDistractorSpawners);
         return noDistractorBubblePercentage;
+    }
+
+    public void SpawnMultipledistractorBubbles()
+    {
+        Debug.Log("Distractor spawners " + GetPrecentageofDistractors(distractorBubblePercentage));
+        for (int distractorSpawners = 0; distractorSpawners < GetPrecentageofDistractors(distractorBubblePercentage); distractorSpawners++)
+        {
+            StartCoroutine(spawnDistractorBubble());
+        }
     }
 }

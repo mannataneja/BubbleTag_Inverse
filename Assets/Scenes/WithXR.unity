@@ -2523,7 +2523,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distractorBubble: {fileID: 9026474987840030761, guid: 0b087e32eecf45644a7d33640547e19e, type: 3}
   spawnInterval: 5
-  numberOfDistractorSpawners: 5
+  numberOfDistractorSpawners: 10
   spawnDistractorLocations:
   - {fileID: 244086424}
   - {fileID: 1677189492}
@@ -2536,7 +2536,7 @@ MonoBehaviour:
   - {fileID: 639806635}
   - {fileID: 2018597950}
   flickerMaterial: {fileID: 2100000, guid: f50809dd470aba74e923b6b59d86dc12, type: 2}
-  distractorBubblePercentage: 50
+  distractorBubblePercentage: 1
 --- !u!1 &934147030
 GameObject:
   m_ObjectHideFlags: 0
