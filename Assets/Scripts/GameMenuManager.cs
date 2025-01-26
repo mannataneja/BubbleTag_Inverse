@@ -7,6 +7,7 @@ public class GameMenuManager : MonoBehaviour
 {
     [SerializeField] private GameManager gameManager;
     [SerializeField] private GameDataCollector gameDataCollector;
+    [SerializeField] private FirebaseGameDataCollection firebaseGameDataCollection;
     [SerializeField] private CustomButton viewDataBtn;
     [SerializeField] private CustomButton CloseBtn;
     [SerializeField] private CustomButton exitButton;
@@ -37,11 +38,11 @@ public class GameMenuManager : MonoBehaviour
             if (OVRInput.GetDown(OVRInput.Button.One))
             {
                 gameDataCollector.LogGameData(GameData.playerName, GameData.playerScore, GameData.playerMissed, GameData.playerWrong);
+                
+                //Log into Firebase
+                firebaseGameDataCollection.AddDataToFirebase(GameData.playerScore, GameData.playerWrong, GameData.playerMissed);
+                
                 Application.Quit();
-                //if (!quitCalled)
-                //{
-                //  quitCalled = true;
-                //}
             }
         }
 

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "532259697612",
+    "project_id": "bubbletag-v01",
+    "storage_bucket": "bubbletag-v01.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:532259697612:android:b799007ad34c0b348ba369",
+        "android_client_info": {
+          "package_name": "com.RIT.Bubbles"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4SqA2p4JdBS-RztawyCXcY7EnrMzHIM0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
