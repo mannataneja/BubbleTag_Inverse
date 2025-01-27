@@ -2539,7 +2539,7 @@ MonoBehaviour:
   - {fileID: 639806635}
   - {fileID: 2018597950}
   flickerMaterial: {fileID: 2100000, guid: f50809dd470aba74e923b6b59d86dc12, type: 2}
-  distractorBubblePercentage: 1
+  distractorBubblePercentage: 50
 --- !u!1 &934147030
 GameObject:
   m_ObjectHideFlags: 0

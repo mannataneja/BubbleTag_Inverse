@@ -11,8 +11,12 @@ public class StartMenuManager : MonoBehaviour
 {
     [SerializeField] private CustomButton startBtn;
     [SerializeField] private CustomButton startTutorialBtn;
-    [SerializeField] private TMP_InputField nameInput;
-    [SerializeField] private Color EmptyNameFieldHighlight;
+    //[SerializeField] private TMP_InputField nameInput;
+    //[SerializeField] private Color EmptyNameFieldHighlight;
+
+    [SerializeField] private GameManager gameManager;
+    [SerializeField] private DistractorBubbleSpawner distractorBubbleSpawner;
+    [SerializeField] private BubbleSpawner bubbleSpawner;
 
     public void StartGame_Btn()
     {
@@ -27,33 +31,31 @@ public class StartMenuManager : MonoBehaviour
     public void Update()
     {
 
-        if (!string.IsNullOrEmpty(nameInput.text))
+        //if (!string.IsNullOrEmpty(nameInput.text))
+        //    GameData.playerName = nameInput.text;
+        //    startBtn.interactable = true;
+            
+        if (startBtn.IsButtonHighlighted())
         {
-            GameData.playerName = nameInput.text;
-            startBtn.interactable = true;
-            
-            if (startBtn.IsButtonHighlighted())
+            if (OVRInput.GetDown(OVRInput.Button.One))
             {
-                if (OVRInput.GetDown(OVRInput.Button.One))
-                {
-                    StartGame_Btn();
-                }
+                StartGame_Btn();
             }
+        }
             
-            if (startTutorialBtn.IsButtonHighlighted())
+        if (startTutorialBtn.IsButtonHighlighted())
+        {
+            if (OVRInput.GetDown(OVRInput.Button.One))
             {
-                if (OVRInput.GetDown(OVRInput.Button.One))
-                {
-                    StartTutorial_Btn();
-                }
+                StartTutorial_Btn();
             }
         }
     }
 
-    private void changeBtnHighlightColor()
-    {
-        ColorBlock colorBlock = startBtn.colors;
-        colorBlock.highlightedColor = EmptyNameFieldHighlight;
-        startBtn.colors = colorBlock;
-    }
+    //private void changeBtnHighlightColor()
+    //{
+    //    ColorBlock colorBlock = startBtn.colors;
+    //    colorBlock.highlightedColor = EmptyNameFieldHighlight;
+    //    startBtn.colors = colorBlock;
+    //}
 }
