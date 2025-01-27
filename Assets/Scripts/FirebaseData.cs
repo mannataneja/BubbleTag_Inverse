@@ -1,4 +1,5 @@
 using Firebase.Firestore;
+using System.Collections.Generic;
 
 [FirestoreData]
 public struct FirebaseData
@@ -14,4 +15,7 @@ public struct FirebaseData
 
     [FirestoreProperty]
     public int playerMissed { get; set; }
+
+    [FirestoreProperty]
+    public List<float> reactionTimes { get; set; }
 }

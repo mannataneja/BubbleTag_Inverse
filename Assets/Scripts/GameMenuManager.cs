@@ -37,10 +37,10 @@ public class GameMenuManager : MonoBehaviour
         {
             if (OVRInput.GetDown(OVRInput.Button.One))
             {
-                gameDataCollector.LogGameData(GameData.playerName, GameData.playerScore, GameData.playerMissed, GameData.playerWrong);
+                gameDataCollector.LogGameData(GameData.playerName, GameData.playerScore, GameData.playerMissed, GameData.playerWrong, GameData.reactionTimes);
                 
                 //Log into Firebase
-                firebaseGameDataCollection.AddDataToFirebase(GameData.playerScore, GameData.playerWrong, GameData.playerMissed);
+                firebaseGameDataCollection.AddDataToFirebase(GameData.playerScore, GameData.playerWrong, GameData.playerMissed, GameData.reactionTimes);
                 
                 Application.Quit();
             }

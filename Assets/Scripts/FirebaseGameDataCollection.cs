@@ -27,22 +27,15 @@ public class FirebaseGameDataCollection : MonoBehaviour
         sessionId = System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown("space"))
-        {
-            AddDataToFirebase(GameData.playerScore, GameData.playerWrong, GameData.playerMissed);
-        }
-    }
-
-    public void AddDataToFirebase(int playerScore, int playerWrong, int playerMissed)
+    public void AddDataToFirebase(int playerScore, int playerWrong, int playerMissed, List<float> reactionTimes)
     {
         FirebaseData firebaseData = new FirebaseData
         {
             sessionID = sessionId,
             playerScore = playerScore,
             playerWrong = playerWrong,
-            playerMissed = playerMissed
+            playerMissed = playerMissed,
+            reactionTimes = reactionTimes
         };
         DocumentReference playerDataRef = db.Collection("PlayerData").Document(sessionId);
 

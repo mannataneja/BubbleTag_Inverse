@@ -29,11 +29,11 @@ public class GameDataCollector : MonoBehaviour
     }
 
 
-    public void LogGameData(string playerName, int score, int missed, int wrong)
+    public void LogGameData(string playerName, int score, int missed, int wrong, List<float> reactionTimes)
     {
         string sessionID = System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss"); // Unique session ID
 
-        string data = $"{sessionID},{playerName}, {score}, {missed}, {wrong}";
+        string data = $"{sessionID},{playerName}, {score}, {missed}, {wrong}, {reactionTimes}";
 
         //using (StreamWriter writer = new StreamWriter(filePath, true))
         //{
