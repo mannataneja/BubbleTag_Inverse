@@ -34,7 +34,7 @@ public class StartMenuManager : MonoBehaviour
         //if (!string.IsNullOrEmpty(nameInput.text))
         //    GameData.playerName = nameInput.text;
         //    startBtn.interactable = true;
-            
+
         if (startBtn.IsButtonHighlighted())
         {
             if (OVRInput.GetDown(OVRInput.Button.One))
@@ -42,7 +42,7 @@ public class StartMenuManager : MonoBehaviour
                 StartGame_Btn();
             }
         }
-            
+
         if (startTutorialBtn.IsButtonHighlighted())
         {
             if (OVRInput.GetDown(OVRInput.Button.One))

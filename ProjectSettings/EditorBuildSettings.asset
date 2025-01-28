@@ -8,13 +8,13 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 55daccc09a3b69647bbab145b54a3ab3
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MainMenu.unity
     guid: 2f22cd07b79e8da479950d6ae003b35a
   - enabled: 1
     path: Assets/Scenes/WithXR.unity
     guid: 4a24e6671a9799d4db41f28f449a7fcd
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TutorialWithXR.unity
     guid: 6ad83d0287a315f459838b5d815acb26
   m_configObjects:

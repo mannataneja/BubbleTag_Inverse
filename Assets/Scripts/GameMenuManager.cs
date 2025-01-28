@@ -40,7 +40,7 @@ public class GameMenuManager : MonoBehaviour
                 gameDataCollector.LogGameData(GameData.playerName, GameData.playerScore, GameData.playerMissed, GameData.playerWrong, GameData.reactionTimes);
                 
                 //Log into Firebase
-                firebaseGameDataCollection.AddDataToFirebase(GameData.playerScore, GameData.playerWrong, GameData.playerMissed, GameData.reactionTimes);
+                firebaseGameDataCollection.AddDataToFirebase(GameData.difficulty.ToString(), GameData.playerScore, GameData.playerWrong, GameData.playerMissed, GameData.reactionTimes);
                 
                 Application.Quit();
             }

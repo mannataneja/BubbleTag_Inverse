@@ -27,10 +27,11 @@ public class FirebaseGameDataCollection : MonoBehaviour
         sessionId = System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
     }
 
-    public void AddDataToFirebase(int playerScore, int playerWrong, int playerMissed, List<float> reactionTimes)
+    public void AddDataToFirebase(string difficulty, int playerScore, int playerWrong, int playerMissed, List<float> reactionTimes)
     {
         FirebaseData firebaseData = new FirebaseData
         {
+            Difficulty = difficulty,
             sessionID = sessionId,
             playerScore = playerScore,
             playerWrong = playerWrong,

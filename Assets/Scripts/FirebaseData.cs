@@ -8,6 +8,9 @@ public struct FirebaseData
     public string sessionID { get; set; }
 
     [FirestoreProperty]
+    public string Difficulty { get; set; }
+
+    [FirestoreProperty]
     public int playerScore { get; set; }
 
     [FirestoreProperty]
@@ -18,4 +21,6 @@ public struct FirebaseData
 
     [FirestoreProperty]
     public List<float> reactionTimes { get; set; }
+
+
 }

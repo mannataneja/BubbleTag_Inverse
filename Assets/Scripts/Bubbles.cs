@@ -15,11 +15,11 @@ public class Bubbles : MonoBehaviour
     public int animalIndex; //animalIndex is passed from GameManager
     public string animalTag;
 
-    public float speed = 5f;
+    //public float speed = 5f;
     public ParticleSystem pop;
     
 
-    public float maxHeight = 7f;
+    //public float maxHeight = 7f;
 
     GameObject animal;
     Rigidbody animalRB;
@@ -73,9 +73,11 @@ public class Bubbles : MonoBehaviour
     void Update()
     {
         //Make bubble float up
-        transform.Translate(Vector3.up * speed * Time.deltaTime);
+        //transform.Translate(Vector3.up * speed * Time.deltaTime);
+        transform.Translate(Vector3.up * GameData.bubbleSpeed * Time.deltaTime); //Chaniging speed to gameData.bubbleSpeed
 
-        if (transform.position.y >= maxHeight) //bubble and animal is despawned after reaching maximum height
+        //if (transform.position.y >= maxHeight) //bubble and animal is despawned after reaching maximum height
+        if (transform.position.y >= GameData.maxHeight) // chainging maxheight to the one from gamedata
         {
             if(animal.GetComponent<Animal>().isCurrentAnimal)
             {

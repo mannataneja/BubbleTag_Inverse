@@ -1,7 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Collections.Generic;
 
 
 public static class GameData 
@@ -12,8 +12,17 @@ public static class GameData
     public static string playerName = "Player";
     //public static float reactionTime;
     public static List<float> reactionTimes = new List<float>(); //Store all the reaction times of the player on correct hits
+    public static DifficultyEnum difficulty = DifficultyEnum.Easy;
+    public enum DifficultyEnum
+    {
+        Easy,
+        Medium,
+        Hard
+    }
 
-
+    [Header("Bubble Parameters")]
+    public static float maxHeight = 7f;
+    public static float bubbleSpeed = 3f;
 
     private static float startTime;
     private static float endTime;

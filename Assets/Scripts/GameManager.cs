@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
     public Canvas HUD;
 
     public GameDataCollector collector;
-
+    public DistractorBubbleSpawner DistractorBubbleSpawner;
 
     void Start()
     {
