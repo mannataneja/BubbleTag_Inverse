@@ -63,13 +63,12 @@ public class Bubbles : MonoBehaviour
         animalRB.useGravity = false;
         animalCollider.isTrigger = true;
 
-        // originalBubbleMaterial = transform.GetChild(0).GetComponent<MeshRenderer>().material;
-
         if (isDistractor)
         {
-            Debug.Log("I am distractor" + gameObject.name);
-            SetFlickerMaterial();
+            animal.GetComponent<Animal>().isDistactor = true;
         }
+
+        // originalBubbleMaterial = transform.GetChild(0).GetComponent<MeshRenderer>().material;
     }
     void Update()
     {

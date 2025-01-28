@@ -34,7 +34,7 @@ public class DistractorBubble : MonoBehaviour
 
         if (transform.position.y >= distractorMaxHeight)
         {
-            GameObject.FindAnyObjectByType<DistractorBubbleSpawner>().spawnDistractorBubble();
+            GameObject.FindAnyObjectByType<DistractorBubbleSpawner>().SpawnDistractorBubble();
             Destroy(gameObject);
         }
     }

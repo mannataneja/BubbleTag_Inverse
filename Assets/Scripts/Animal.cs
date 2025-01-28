@@ -10,6 +10,7 @@ public class Animal : MonoBehaviour
 
     public bool selectable = false;
     public bool isCurrentAnimal = false;
+    public bool isDistactor = false;
 
     bool rotate = false;
     bool floating = false;
@@ -21,8 +22,11 @@ public class Animal : MonoBehaviour
     {
         animalTag = gameObject.tag;
         manager = GameObject.FindAnyObjectByType<GameManager>();
-        CheckForCurrentAnimal();
-        StartCoroutine(AnimalSelectable());
+        if (!isDistactor)
+        {
+            CheckForCurrentAnimal();
+            StartCoroutine(AnimalSelectable());
+        }
     }
 
     // Update is called once per frame

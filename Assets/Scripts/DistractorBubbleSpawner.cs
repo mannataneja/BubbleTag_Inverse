@@ -8,23 +8,36 @@ public class DistractorBubbleSpawner : MonoBehaviour
     public float spawnInterval;
     public int numberOfDistractorSpawners;
     public Transform[] spawnDistractorLocations = new Transform[4];
+    public int percentageThatFlicker;
 
     public Material flickerMaterial;
-    [SerializeField] float distractorBubblePercentage;
+    //[SerializeField] float distractorBubblePercentage;
 
     int distractorAnimalIndex;
     private void Start()
     {
-        SpawnMultipledistractorBubbles();
+        //SpawnMultipledistractorBubbles();
+        StartCoroutine(SpawnDistractorBubble());
     }
 
-    public IEnumerator spawnDistractorBubble()
+    public IEnumerator SpawnDistractorBubble()
     {
         while (true)
         {
-            GetPrecentageofDistractors(distractorBubblePercentage);
-            GameObject newDistacrtorBubble = Instantiate(distractorBubble, spawnDistractorLocations[Random.Range(0, GetPrecentageofDistractors(distractorBubblePercentage))]);
-            newDistacrtorBubble.GetComponent<Bubbles>().SetFlickerMaterial();
+           // GetPrecentageofDistractors(distractorBubblePercentage);
+            GameObject newDistacrtorBubble = Instantiate(distractorBubble, spawnDistractorLocations[Random.Range(0, numberOfDistractorSpawners)]);
+
+            int random = Random.Range(0, 100);
+            if (random < percentageThatFlicker)
+            {
+                newDistacrtorBubble.GetComponent<Bubbles>().SetFlickerMaterial();
+                Debug.Log("Flicker");
+            }
+            else
+            {
+                newDistacrtorBubble.GetComponent<Bubbles>().SetDullBubbleMaterial();
+                Debug.Log("Not Flicker");
+            }
             newDistacrtorBubble.GetComponent<Bubbles>().isDistractor = true;
 
             Vector3 temp = newDistacrtorBubble.transform.position;
@@ -44,10 +57,10 @@ public class DistractorBubbleSpawner : MonoBehaviour
 
     public void SpawnMultipledistractorBubbles()
     {
-        Debug.Log("Distractor spawners " + GetPrecentageofDistractors(distractorBubblePercentage));
+/*        Debug.Log("Distractor spawners " + GetPrecentageofDistractors(distractorBubblePercentage));
         for (int distractorSpawners = 0; distractorSpawners < GetPrecentageofDistractors(distractorBubblePercentage); distractorSpawners++)
         {
-            StartCoroutine(spawnDistractorBubble());
-        }
+            StartCoroutine(SpawnDistractorBubble());
+        }*/
     }
 }
