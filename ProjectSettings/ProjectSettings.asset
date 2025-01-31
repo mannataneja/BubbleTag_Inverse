@@ -162,7 +162,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.unity.template.vr
+    Android: com.RIT.Bubbles
     Standalone: com.Unity-Technologies.VR-Template
   buildNumber:
     Standalone: 0

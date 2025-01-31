@@ -77,6 +77,7 @@ public class Animal : MonoBehaviour
         selectable = true; //make it interactable
         //gameObject.transform.parent.GetComponent<Bubbles>().SetCurrentBubbleMaterial(); //make bubble selectable/transparent color
         gameObject.GetComponent<AudioSource>().Play(); //play animal sound
+        if(isCurrentAnimal) GameData.StartTimer(); // to log reaction time
         yield return new WaitForSeconds(manager.timeBetweenSpawns - 0.5f); //wait before making it un-selectable
         selectable = false;
         if (!isCurrentAnimal) //Do not change material of current animal as it is set to always flicker

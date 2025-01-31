@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:keep="@string/gcm_defaultSenderId,@string/google_storage_bucket,@string/project_id,@string/google_api_key,@string/google_crash_reporting_api_key,@string/google_app_id">
+  <string name="gcm_defaultSenderId" translatable="false">532259697612</string>
+  <string name="google_storage_bucket" translatable="false">bubbletag-v01.firebasestorage.app</string>
+  <string name="project_id" translatable="false">bubbletag-v01</string>
+  <string name="google_api_key" translatable="false">AIzaSyA4SqA2p4JdBS-RztawyCXcY7EnrMzHIM0</string>
+  <string name="google_crash_reporting_api_key" translatable="false">AIzaSyA4SqA2p4JdBS-RztawyCXcY7EnrMzHIM0</string>
+  <string name="google_app_id" translatable="false">1:532259697612:android:b799007ad34c0b348ba369</string>
+</resources>
