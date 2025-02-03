@@ -49,11 +49,11 @@ public class DistractorBubbleSpawner : MonoBehaviour
         }
     }
 
-    public int GetPrecentageofDistractors(float distractorBubblePercentage)
+/*    public int GetPrecentageofDistractors(float distractorBubblePercentage)
     {
         int noDistractorBubblePercentage = (int)((distractorBubblePercentage / 100) * numberOfDistractorSpawners);
         return noDistractorBubblePercentage;
-    }
+    }*/
 
     public void SpawnMultipledistractorBubbles()
     {
